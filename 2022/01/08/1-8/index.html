@@ -9,13 +9,15 @@
   
   <title>每日总结-1月8日 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="高斯消元与线性基高斯消元与线性基(×) 疯狂查资料搭建博客(√)  使用的是hexo框架+github的方法搭建的博客  今日总结今天上午去做核酸，请了假，在做完核酸回来之后一直在搞博客，没有进行训练；下午也是大部分时间都在进行个人博客的一个搭建；晚上依然是搭建博客😭。 到了1点钟左右，终于是搭建好了自己的博客。 当然，十分感谢我的好朋友的帮助。不然不知道到什么时候才能搭建好。 慢的原因(其一)">
+<meta property="og:type" content="article">
 <meta property="og:title" content="每日总结-1月8日">
 <meta property="og:url" content="http://example.com/2022/01/08/1-8/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="高斯消元与线性基高斯消元与线性基(×) 疯狂查资料搭建博客(√)  使用的是hexo框架+github的方法搭建的博客  今日总结今天上午去做核酸，请了假，在做完核酸回来之后一直在搞博客，没有进行训练；下午也是大部分时间都在进行个人博客的一个搭建；晚上依然是搭建博客😭。 到了1点钟左右，终于是搭建好了自己的博客。 当然，十分感谢我的好朋友的帮助。不然不知道到什么时候才能搭建好。 慢的原因(其一)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-08T15:33:25.000Z">
-<meta property="article:modified_time" content="2022-01-08T15:33:25.399Z">
+<meta property="article:modified_time" content="2022-01-08T17:58:16.856Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -310,7 +312,54 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h2 id="高斯消元与线性基"><a href="#高斯消元与线性基" class="headerlink" title="高斯消元与线性基"></a>高斯消元与线性基</h2><p>高斯消元与线性基(×)</p>
+<p>疯狂查资料搭建博客(√)</p>
+<ul>
+<li>使用的是hexo框架+github的方法搭建的博客</li>
+</ul>
+<h3 id="今日总结"><a href="#今日总结" class="headerlink" title="今日总结"></a>今日总结</h3><p>今天上午去做核酸，请了假，在做完核酸回来之后一直在搞博客，没有进行训练；下午也是大部分时间都在进行个人博客的一个搭建；晚上依然是搭建博客😭。</p>
+<p>到了1点钟左右，终于是搭建好了自己的博客。</p>
+<p>当然，十分感谢我的好朋友的帮助。不然不知道到什么时候才能搭建好。</p>
+<h3 id="慢的原因-其一"><a href="#慢的原因-其一" class="headerlink" title="慢的原因(其一)"></a>慢的原因(其一)</h3><p>我刚开始是跟着我朋友给我发的链接进行一步一步操作的，但是，在进行了无数次的重复操作并且每次都是以失败告终后，我感觉，有问题。</p>
+<p>之后去各种地方查找相关资料，最后，在(今晚🤔忘了几点了，总之就很晚，可能快12点吧)的时候，我终于在B站的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mU4y1j72n?from=search&seid=2169282526152443726&spm_id_from=333.337.0.0">这个视频</a>中取到了真经。</p>
+<p>具体原因就是我刚开始看的教程都是老版的教程，但是最近github有进行这方面的更新</p>
+<ul>
+<li>在上传到github上时不能用密钥进行验证了</li>
+<li>默认的分支进行修改了</li>
+</ul>
+<h3 id="解决方法-其一-和原版教程相比"><a href="#解决方法-其一-和原版教程相比" class="headerlink" title="解决方法(其一)(和原版教程相比)"></a>解决方法(其一)(和原版教程相比)</h3><ul>
+<li><p>将 <em>_config.yml</em> 文件中的 <em>branch</em> 选项改为 <em>main</em></p>
+<p>(之前的教程中这里都是<em>master</em>)</p>
+</li>
+<li><p>在输入用户名密码验证的输入密码时，不能输入账户的密码，应该输入令牌(令牌设置在下一条)或者使用其他方法进行验证。</p>
+</li>
+<li><p>令牌的设置</p>
+<ul>
+<li>在github中进入 <em>settings</em></li>
+<li>点击 <em>Developer settings</em> </li>
+<li>点击 <em>Personal access tokens</em></li>
+<li>新建一个令牌</li>
+<li>即可</li>
+</ul>
+</li>
+</ul>
+<h3 id="慢的原因-其二"><a href="#慢的原因-其二" class="headerlink" title="慢的原因(其二)"></a>慢的原因(其二)</h3><p>我在写昨天的那片博客的时候，需要在里面复制一张图片，但是，不管是使用绝对路径还是使用相对路径，在本地的.md文件中可以正常看到图片，但是到网页端就看不到图片。</p>
+<h3 id="解决方法-其二"><a href="#解决方法-其二" class="headerlink" title="解决方法(其二)"></a>解决方法(其二)</h3><p>我是看B站上的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1D7411U7Yk?from=search&seid=3582402406331181956&spm_id_from=333.337.0.0">这个视频</a>进行操作的。</p>
+<p>具体的就是</p>
+<ol>
+<li>将 <em>_config.yml</em> 文件中的 <em>post_asset_folder</em> 选项设置为 <em>true</em> </li>
+<li>下载一个插件</li>
+</ol>
+<ul>
+<li>在 <code>\source\_posts</code> 路径下进行 <em>Git Bash</em> </li>
+<li>输入 <code>npm add https://github.com/CodeFalling/hexo-asset-image</code> 进行下载</li>
+</ul>
+<ol start="3">
+<li>之后在.md文件中需要使用图片时，使用相对路径即可</li>
+</ol>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>不管怎么样，也算是把博客搭建好了，之后会进行博客的美化工作。</p>
+<p>如果遇到了类似的困难，可以将本篇博客转发。</p>
+
       
     </div>
     
@@ -321,7 +370,7 @@
         <p><span>本文标题:</span><a  href="/2022/01/08/1-8/">每日总结-1月8日</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问  的个人博客"></a></p>
         <p><span>发布时间:</span>2022年01月08日 - 23时33分</p>
-        <p><span>最后更新:</span>2022年01月08日 - 23时33分</p>
+        <p><span>最后更新:</span>2022年01月09日 - 01时58分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2022/01/08/1-8/" title="每日总结-1月8日">http://example.com/2022/01/08/1-8/</a>
             <span class="copy-path" data-clipboard-text="原文: http://example.com/2022/01/08/1-8/　　作者: " title=""></span>
@@ -349,7 +398,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%9F%BA"><span class="toc-number">1.</span> <span class="toc-text">高斯消元与线性基</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8A%E6%97%A5%E6%80%BB%E7%BB%93"><span class="toc-number">1.1.</span> <span class="toc-text">今日总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%85%A2%E7%9A%84%E5%8E%9F%E5%9B%A0-%E5%85%B6%E4%B8%80"><span class="toc-number">1.2.</span> <span class="toc-text">慢的原因(其一)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-%E5%85%B6%E4%B8%80-%E5%92%8C%E5%8E%9F%E7%89%88%E6%95%99%E7%A8%8B%E7%9B%B8%E6%AF%94"><span class="toc-number">1.3.</span> <span class="toc-text">解决方法(其一)(和原版教程相比)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%85%A2%E7%9A%84%E5%8E%9F%E5%9B%A0-%E5%85%B6%E4%BA%8C"><span class="toc-number">1.4.</span> <span class="toc-text">慢的原因(其二)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-%E5%85%B6%E4%BA%8C"><span class="toc-number">1.5.</span> <span class="toc-text">解决方法(其二)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">1.6.</span> <span class="toc-text">结语</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
