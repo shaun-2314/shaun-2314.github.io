@@ -277,6 +277,103 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-1-19" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2022/01/19/1-19/" class="article-date">
+      <time datetime="2022-01-19T12:09:35.000Z" itemprop="datePublished">2022-01-19</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2022/01/19/1-19/">每日总结-1月19日</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="数据结构进阶"><a href="#数据结构进阶" class="headerlink" title="数据结构进阶"></a>数据结构进阶</h2><ul>
+<li>splay树</li>
+<li>主席树</li>
+</ul>
+<h3 id="今日战况"><a href="#今日战况" class="headerlink" title="今日战况"></a>今日战况</h3><p><img src="/2022/01/19/1-19/Standing.png" alt="Standing"></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>今天的内容个人感觉难度很大，一时间难以接受，只写出了一道题，还是用的stl中的set写的</p>
+<h3 id="部分题目"><a href="#部分题目" class="headerlink" title="部分题目"></a>部分题目</h3><h4 id="E题-营业额统计"><a href="#E题-营业额统计" class="headerlink" title="E题: 营业额统计"></a>E题: 营业额统计</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2234">题目传送门</a></p>
+<h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h5><blockquote>
+<p><strong>原题来自：HNOI 2002</strong></p>
+<p>Tiger 最近被公司升任为营业部经理，他上任后接受公司交给的第一项任务便是统计并分析公司成立以来的营业情况。</p>
+<p>Tiger 拿出了公司的账本，账本上记录了公司成立以来每天的营业额。分析营业情况是一项相当复杂的工作。由于节假日，大减价或者是其他情况的时候，营业额会出现一定的波动，当然一定的波动是能够接受的，但是在某些时候营业额突变得很高或是很低，这就证明公司此时的经营状况出现了问题。</p>
+<p>经济管理学上定义了一种最小波动值来衡量这种情况：记该天以前某一天的营业额为 a_i，该天营业额为 b，则该天的最小波动值<br>$$<br>\delta=\min |a_i-b|<br>$$<br>，当最小波动值越大时，就说明营业情况越不稳定。而分析整个公司的从成立到现在营业情况是否稳定，只需要把每一天的最小波动值加起来就可以了。</p>
+<p>你的任务就是编写一个程序帮助 Tiger 来计算这一个值，第一天的最小波动值为第一天的营业额。</p>
+<h4 id="一句话题意"><a href="#一句话题意" class="headerlink" title="一句话题意"></a>一句话题意</h4><p>给出一个 n 个数的数列 {a_n}，对于第 i 个元素 a_i，定义<br>$$<br>f_i=\min |a_i-a_j|其中 1\le j\lt i,f_1=a_1<br>$$<br>求<br>$$<br>\sum f_i。<br>$$<br><strong>输入格式</strong></p>
+<p>第一行为正整数，表示该公司从成立一直到现在的天数；</p>
+<p>接下来的 n 行每行有一个整数，表示第 i 天公司的营业额 a_i。</p>
+<p><strong>输出格式</strong></p>
+<p>仅有一个正整数，即每一天最小波动的和，结果不超过<br>$$<br>2^{31}<br>$$<br><strong>样例</strong></p>
+<p><strong>Input</strong></p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">5</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">5</span><br><span class="line">4</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>Output</strong></p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">12</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>$$<br>5+∣1−5∣+∣2−1∣+∣5−5∣+∣4−5∣+∣6−5∣=5+4+1+0+1+1=12<br>$$</p>
+<p><strong>数据范围与提示</strong></p>
+<p>对于全部数据<br>$$<br>1\le n\lt 2^{15},|a_i|\le 10^6<br>$$</p>
+</blockquote>
+<h5 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h5><p>给出一个 n 个数的数列 {a_n}，对于第 i 个元素 a_i，定义<br>$$<br>f_i=\min |a_i-a_j|其中 1\le j\lt i,f_1=a_1<br>$$<br>求<br>$$<br>\sum f_i。<br>$$</p>
+<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>由于数据量过大，我们需要使用splay树数据结构进行解题，但是，这道题也可以使用stl里的set进行解题</p>
+<p>set里面有内置的 lower_bound 函数和 upper_bound 函数，可以在极短的时间查找到大于或大于等于一个数的数的迭代器，这个迭代器减一即为小于等于这个数的数的迭代器。</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">set&lt;<span class="keyword">int</span>&gt; se;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">int</span> jj,ans=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;jj);</span><br><span class="line">	se.<span class="built_in">emplace</span>(jj);</span><br><span class="line">	ans+=jj;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;jj);</span><br><span class="line">		<span class="keyword">int</span> temp;</span><br><span class="line">		<span class="keyword">auto</span> kk=se.<span class="built_in">lower_bound</span>(jj);</span><br><span class="line">		<span class="keyword">if</span>(kk==se.<span class="built_in">end</span>())&#123;</span><br><span class="line">			--kk;</span><br><span class="line">			temp=jj-*kk;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			temp=*kk-jj;</span><br><span class="line">			<span class="keyword">if</span>(kk!=se.<span class="built_in">begin</span>())&#123;</span><br><span class="line">				--kk;</span><br><span class="line">				temp=<span class="built_in">min</span>(temp,jj-*kk);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		ans+=temp;</span><br><span class="line">		se.<span class="built_in">emplace</span>(jj);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//	int t;scanf(&quot;%d&quot;,&amp;t);</span></span><br><span class="line"><span class="comment">//	while(t--)</span></span><br><span class="line">		<span class="built_in">solve</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>明天再好好理解理解。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2021ACM%E5%AF%92%E5%81%87%E9%9B%86%E8%AE%AD/" rel="tag">2021ACM寒假集训</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-1-18" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1293,114 +1390,6 @@
 </ul>
 <h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; P;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXX=<span class="number">6005</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">0.0000001</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[MAXX],ans[MAXX][<span class="number">2</span>],in[MAXX];</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; son[MAXX];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> flag)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(ans[now][flag]!=Inf)</span><br><span class="line">		<span class="keyword">return</span> ans[now][flag];</span><br><span class="line">	<span class="keyword">if</span>(flag==<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">int</span> re=a[now];</span><br><span class="line">		<span class="keyword">int</span> si=son[now].<span class="built_in">size</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;si;++i)</span><br><span class="line">			re+=<span class="built_in">dfs</span>(son[now][i],<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">return</span> ans[now][flag]=re;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> re=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> si=son[now].<span class="built_in">size</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;si;++i)</span><br><span class="line">			re+=<span class="built_in">max</span>(<span class="built_in">dfs</span>(son[now][i],<span class="number">1</span>),<span class="built_in">dfs</span>(son[now][i],<span class="number">0</span>));</span><br><span class="line">		<span class="keyword">return</span> ans[now][flag]=re;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve_it</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i)&#123;</span><br><span class="line">		<span class="keyword">int</span> jj,kk;<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;jj,&amp;kk);</span><br><span class="line">		son[kk].<span class="built_in">emplace_back</span>(jj);</span><br><span class="line">		in[jj]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">memset</span>(ans,Inf,<span class="built_in"><span class="keyword">sizeof</span></span>(ans));</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!in[i])&#123;</span><br><span class="line">			ans=<span class="built_in">max</span>(<span class="built_in">dfs</span>(i,<span class="number">0</span>),<span class="built_in">dfs</span>(i,<span class="number">1</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//	int t;scanf(&quot;%d&quot;,&amp;t);</span></span><br><span class="line"><span class="comment">//	while(t--)</span></span><br><span class="line">		<span class="built_in">solve_it</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2021ACM%E5%AF%92%E5%81%87%E9%9B%86%E8%AE%AD/" rel="tag">2021ACM寒假集训</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-1-8" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2022/01/08/1-8/" class="article-date">
-      <time datetime="2022-01-08T15:33:25.000Z" itemprop="datePublished">2022-01-08</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2022/01/08/1-8/">每日总结-1月8日</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="高斯消元与线性基"><a href="#高斯消元与线性基" class="headerlink" title="高斯消元与线性基"></a>高斯消元与线性基</h2><p>高斯消元与线性基(×)</p>
-<p>疯狂查资料搭建博客(√)</p>
-<ul>
-<li>使用的是hexo框架+github的方法搭建的博客</li>
-</ul>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>今天上午去做核酸，请了假，在做完核酸回来之后一直在搞博客，没有进行训练；下午也是大部分时间都在进行个人博客的一个搭建；晚上依然是搭建博客😭。</p>
-<p>到了1点钟左右，终于是搭建好了自己的博客。</p>
-<p>当然，十分感谢我的好朋友的帮助。不然不知道到什么时候才能搭建好。</p>
-<h3 id="慢的原因-其一"><a href="#慢的原因-其一" class="headerlink" title="慢的原因(其一)"></a>慢的原因(其一)</h3><p>我刚开始是跟着我朋友给我发的链接进行一步一步操作的，但是，在进行了无数次的重复操作并且每次都是以失败告终后，我感觉，有问题。</p>
-<p>之后去各种地方查找相关资料，最后，在(今晚🤔忘了几点了，总之就很晚，可能快12点吧)的时候，我终于在B站的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mU4y1j72n?from=search&seid=2169282526152443726&spm_id_from=333.337.0.0">这个视频</a>中取到了真经。</p>
-<p>具体原因就是我刚开始看的教程都是老版的教程，但是最近github有进行这方面的更新</p>
-<ul>
-<li>在上传到github上时不能用密钥进行验证了</li>
-<li>默认的分支进行修改了</li>
-</ul>
-<h3 id="解决方法-其一-和原版教程相比"><a href="#解决方法-其一-和原版教程相比" class="headerlink" title="解决方法(其一)(和原版教程相比)"></a>解决方法(其一)(和原版教程相比)</h3><ul>
-<li><p>将 <em>_config.yml</em> 文件中的 <em>branch</em> 选项改为 <em>main</em></p>
-<p>(之前的教程中这里都是<em>master</em>)</p>
-</li>
-<li><p>在输入用户名密码验证的输入密码时，不能输入账户的密码，应该输入令牌(令牌设置在下一条)或者使用其他方法进行验证。</p>
-</li>
-<li><p>令牌的设置</p>
-<ul>
-<li>在github中进入 <em>settings</em></li>
-<li>点击 <em>Developer settings</em> </li>
-<li>点击 <em>Personal access tokens</em></li>
-<li>新建一个令牌</li>
-<li>即可</li>
-</ul>
-</li>
-</ul>
-<h3 id="慢的原因-其二"><a href="#慢的原因-其二" class="headerlink" title="慢的原因(其二)"></a>慢的原因(其二)</h3><p>我在写昨天的那片博客的时候，需要在里面复制一张图片，但是，不管是使用绝对路径还是使用相对路径，在本地的.md文件中可以正常看到图片，但是到网页端就看不到图片。</p>
-<h3 id="解决方法-其二"><a href="#解决方法-其二" class="headerlink" title="解决方法(其二)"></a>解决方法(其二)</h3><p>我是看B站上的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1D7411U7Yk?from=search&seid=3582402406331181956&spm_id_from=333.337.0.0">这个视频</a>进行操作的。</p>
-<p>具体的就是</p>
-<ol>
-<li>将 <em>_config.yml</em> 文件中的 <em>post_asset_folder</em> 选项设置为 <em>true</em> </li>
-<li>下载一个插件</li>
-</ol>
-<ul>
-<li>在 <code>\source\_posts</code> 路径下进行 <em>Git Bash</em> </li>
-<li>输入 <code>npm add https://github.com/CodeFalling/hexo-asset-image</code> 进行下载</li>
-</ul>
-<ol start="3">
-<li>之后在.md文件中需要使用图片时，使用相对路径即可</li>
-</ol>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>不管怎么样，也算是把博客搭建好了，之后会进行博客的美化工作。</p>
-<p>如果遇到了类似的困难，可以将本篇博客转发。</p>
 
       
     </div>
