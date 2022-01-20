@@ -277,6 +277,142 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-1-10" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2022/01/10/1-10/" class="article-date">
+      <time datetime="2022-01-10T12:05:24.000Z" itemprop="datePublished">2022-01-10</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2022/01/10/1-10/">每日总结-1月10日</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="dp进阶"><a href="#dp进阶" class="headerlink" title="dp进阶"></a>dp进阶</h2><p>区间dp&amp;树形dp&amp;概率dp&amp;数位dp</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>今天没有弄题目，就在网上找资料学习和做题。</p>
+<p>感觉这一部分好难，不太好理解，难以运用。需要大量的练习。</p>
+<h3 id="区间dp"><a href="#区间dp" class="headerlink" title="区间dp"></a>区间dp</h3><p>区间类动态规划是线性动态规划的扩展，它在分阶段地划分问题时，与阶段中元素出现的顺序和由前一阶段的哪些元素合并而来有很大的关系。</p>
+<p>令状态 f(i,j) 表示将下标位置 i 到 j 的所有元素合并能获得的价值的最大值，那么 <code>f(i,j)=max&#123;f(i,k)+f(k+1,j)+cost&#125;</code> ， cost 为将这两组元素合并起来的代价。</p>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>合并：将两个或多个部分进行整合，当然也可以反过来。</li>
+<li>特征：能将问题分解为能两两合并的形式。</li>
+<li>求解：对整个问题设最优质，枚举合并点，将问题分解为左右两个部分，最后合并两个部分的最优值得到原问题的最优值。</li>
+</ul>
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p><a target="_blank" rel="noopener" href="https://loj.ac/p/10147">石子合并</a></p>
+<h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h5><p>将 n 堆石子绕圆形操场排放，现要将石子有序地合并成一堆。规定每次只能选相邻的两堆合并成新的一堆，并将新的一堆的石子数记做该次合并的得分。</p>
+<p>请编写一个程序，读入堆数 n 及每堆的石子数，并进行如下计算：</p>
+<ol>
+<li>选择一种合并石子的方案，使得做 n-1 次合并得分总和最大。</li>
+<li>选择一种合并石子的方案，使得做 n-1 次合并得分总和最小。</li>
+</ol>
+<p><strong>输入格式</strong></p>
+<p>输入第一行一个整数 n ，表示有 n 堆石子。</p>
+<p>第二行 n 个整数，表示每堆石子的数量。</p>
+<p><strong>输出格式</strong></p>
+<p>输出共两行：</p>
+<p>第一行为合并得分总和最小值，</p>
+<p>第二行为合并得分总和最大值。</p>
+<p><strong>样例</strong></p>
+<p><em>输入</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">4 5 9 4</span><br></pre></td></tr></table></figure>
+
+<p><em>输出</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">43</span><br><span class="line">54</span><br></pre></td></tr></table></figure>
+
+<p><strong>数据范围与提示</strong></p>
+<p>对于 100% 的数据，有 1 ≤ n ≤ 200 。</p>
+<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p><strong>状态转移方程</strong></p>
+<p><img src="/2022/01/10/1-10/function1.png" alt="状态转移方程"></p>
+<p><strong>环的处理</strong></p>
+<p>将链延长至两倍，变成 2*n 堆，其中第 i 堆与第 n+i 堆相同，用动态规划求解后，取 f(1,n),f(2,n+1),…,f(i,n+i-1) 中的最优值，即为最后的答案。</p>
+<p><strong>时间复杂度</strong></p>
+<p>O(n³)</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; P;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXX=<span class="number">210</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">0.0000001</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">2</span>*MAXX],sum[<span class="number">2</span>*MAXX],dpmax[<span class="number">2</span>*MAXX][<span class="number">2</span>*MAXX],dpmin[<span class="number">2</span>*MAXX][<span class="number">2</span>*MAXX];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve_it</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">int</span> n2=n*<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">		a[n+i]=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n2;++i)</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line">	<span class="built_in">memset</span>(dpmin,Inf,<span class="built_in"><span class="keyword">sizeof</span></span>(dpmin));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n2;++i)</span><br><span class="line">		dpmin[i][i]=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> c=<span class="number">2</span>;c&lt;=n;++c)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n2;++i)&#123;</span><br><span class="line">			<span class="keyword">int</span> j=i+c<span class="number">-1</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=i;k&lt;j&amp;&amp;k&lt;n2;++k)&#123;</span><br><span class="line">				dpmax[i][j]=<span class="built_in">max</span>(dpmax[i][j],dpmax[i][k]+dpmax[k+<span class="number">1</span>][j]+sum[j]-sum[i<span class="number">-1</span>]);</span><br><span class="line">				dpmin[i][j]=<span class="built_in">min</span>(dpmin[i][j],dpmin[i][k]+dpmin[k+<span class="number">1</span>][j]+sum[j]-sum[i<span class="number">-1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> ansmax=dpmax[<span class="number">1</span>][n],ansmin=dpmin[<span class="number">1</span>][n];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		ansmax=<span class="built_in">max</span>(ansmax,dpmax[i][i+n<span class="number">-1</span>]);</span><br><span class="line">		ansmin=<span class="built_in">min</span>(ansmin,dpmin[i][i+n<span class="number">-1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n%d\n&quot;</span>,ansmin,ansmax);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//	int t;scanf(&quot;%d&quot;,&amp;t);</span></span><br><span class="line"><span class="comment">//	while(t--)</span></span><br><span class="line">		<span class="built_in">solve_it</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="树形dp"><a href="#树形dp" class="headerlink" title="树形dp"></a>树形dp</h3><p>就是在树上进行的dp(确信)</p>
+<ul>
+<li>一般为递归实现</li>
+</ul>
+<h4 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1352">没有上司的舞会</a></p>
+<h5 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h5><p>某大学有 n 个职员，编号为 1…n 。</p>
+<p>他们之间有从属关系，也就是说他们的关系就像一棵以校长为根的树，父结点就是子结点的直接上司。</p>
+<p>现在有个周年庆宴会，宴会每邀请来一个职员都会增加一定的快乐指数 r_i，但是呢，如果某个职员的直接上司来参加舞会了，那么这个职员就无论如何也不肯来参加舞会了。</p>
+<p>所以，请你编程计算，邀请哪些职员可以使快乐指数最大，求最大的快乐指数。</p>
+<p><strong>输入格式</strong></p>
+<p>输入的第一行是一个整数 n。</p>
+<p>第 22 到第 (n + 1) 行，每行一个整数，第 (i + 1) 行的整数表示 i<em>i</em> 号职员的快乐指数 r_i 。</p>
+<p>第 (n + 2) 到第 2n2<em>n</em> 行，每行输入一对整数 l , k ，代表 k 是 l 的直接上司。</p>
+<p><strong>输出格式</strong></p>
+<p>输出一行一个整数代表最大的快乐指数。</p>
+<p><strong>输入输出样例</strong></p>
+<p><em>输入</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1 3</span><br><span class="line">2 3</span><br><span class="line">6 4</span><br><span class="line">7 4</span><br><span class="line">4 5</span><br><span class="line">3 5</span><br></pre></td></tr></table></figure>
+
+<p><em>输出</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
+
+<p><strong>数据范围</strong></p>
+<p>对于 100% 的数据，保证 1 ≤ n ≤ 6 * 10³ , -128 ≤ r_i ≤ 127 , 1 ≤ l,k ≤ n，且给出的关系一定是一棵树。</p>
+<h5 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h5><p>用 f(i,0/1) 代表以 i 为根的子树的最优解 (0表示 i 不参加舞会，1表示 i 参加舞会)。</p>
+<p><strong>状态转移方程</strong></p>
+<ul>
+<li>f(i,0) = ∑max{f(x,1),f(x,0)} (上司不参加舞会，下属可参加可不参加)</li>
+<li>f(i,1) = ∑f(x,0) + a_i (上司参加舞会，下属不参加)</li>
+</ul>
+<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; P;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXX=<span class="number">6005</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">0.0000001</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[MAXX],ans[MAXX][<span class="number">2</span>],in[MAXX];</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; son[MAXX];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> flag)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(ans[now][flag]!=Inf)</span><br><span class="line">		<span class="keyword">return</span> ans[now][flag];</span><br><span class="line">	<span class="keyword">if</span>(flag==<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">int</span> re=a[now];</span><br><span class="line">		<span class="keyword">int</span> si=son[now].<span class="built_in">size</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;si;++i)</span><br><span class="line">			re+=<span class="built_in">dfs</span>(son[now][i],<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">return</span> ans[now][flag]=re;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> re=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> si=son[now].<span class="built_in">size</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;si;++i)</span><br><span class="line">			re+=<span class="built_in">max</span>(<span class="built_in">dfs</span>(son[now][i],<span class="number">1</span>),<span class="built_in">dfs</span>(son[now][i],<span class="number">0</span>));</span><br><span class="line">		<span class="keyword">return</span> ans[now][flag]=re;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve_it</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i)&#123;</span><br><span class="line">		<span class="keyword">int</span> jj,kk;<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;jj,&amp;kk);</span><br><span class="line">		son[kk].<span class="built_in">emplace_back</span>(jj);</span><br><span class="line">		in[jj]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">memset</span>(ans,Inf,<span class="built_in"><span class="keyword">sizeof</span></span>(ans));</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!in[i])&#123;</span><br><span class="line">			ans=<span class="built_in">max</span>(<span class="built_in">dfs</span>(i,<span class="number">0</span>),<span class="built_in">dfs</span>(i,<span class="number">1</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//	int t;scanf(&quot;%d&quot;,&amp;t);</span></span><br><span class="line"><span class="comment">//	while(t--)</span></span><br><span class="line">		<span class="built_in">solve_it</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2021ACM%E5%AF%92%E5%81%87%E9%9B%86%E8%AE%AD/" rel="tag">2021ACM寒假集训</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-1-8" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

@@ -277,6 +277,146 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-1-20" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2022/01/20/1-20/" class="article-date">
+      <time datetime="2022-01-20T11:02:59.000Z" itemprop="datePublished">2022-01-20</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2022/01/20/1-20/">每日总结-1月20日</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="数据结构进阶"><a href="#数据结构进阶" class="headerlink" title="数据结构进阶"></a>数据结构进阶</h2><ul>
+<li>splay树</li>
+<li>主席树</li>
+</ul>
+<h3 id="今日战况"><a href="#今日战况" class="headerlink" title="今日战况"></a>今日战况</h3><p><img src="/2022/01/20/1-20/Standing.png" alt="Standing"></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>今天看了好长时间的splay树和主席树的相关内容，但还是看的不明白，又去看训练的题目集，发现F题又可以用set写，之后，又从伍老师那里知道了A题也可以用set写，于是，就又用set A了这两道题。</p>
+<h3 id="部分题目"><a href="#部分题目" class="headerlink" title="部分题目"></a>部分题目</h3><h4 id="F题-宠物收养所"><a href="#F题-宠物收养所" class="headerlink" title="F题: 宠物收养所"></a>F题: 宠物收养所</h4><p><a target="_blank" rel="noopener" href="https://loj.ac/p/10144">题目传送门</a></p>
+<h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h5><blockquote>
+<p>最近，阿 Q 开了一间宠物收养所。收养所提供两种服务：收养被主人遗弃的宠物和让新的主人领养这些宠物。 每个领养者都希望领养到自己满意的宠物，阿 Q 根据领养者的要求通过他自己发明的一个特殊的公式，得出该领养者希望领养的宠物的特点值 a（a 是一个正整数，a &lt; 2^31），而他也给每个处在收养所的宠物一个特点值，这样他就能够很方便的处理整个领养宠物的过程了。</p>
+<p>宠物收养所总是会有两种情况发生：被遗弃的宠物过多或者是想要收养宠物的人太多，而宠物太少：</p>
+<ol>
+<li>被遗弃的宠物过多时，假若到来一个领养者，这个领养者希望领养的宠物的特点值为 a，那么它将会领养一只目前未被领养的宠物中特点值最接近 a 的一只宠物。任何两只宠物的特点值都不可能是相同的，任何两个领养者的希望领养宠物的特点值也不可能是一样的。如果有两只满足要求的宠物，即存在两只宠物他们的特点值分别为 a-b 和 a+b，那么领养者将会领养特点值为 a-b 的那只宠物；</li>
+<li>收养宠物的人过多，假若到来一只被收养的宠物，那么哪个领养者能够领养它呢？能够领养它的领养者，是那个希望被领养宠物的特点值最接近该宠物特点值的领养者，如果该宠物的特点值为 a，存在两个领养者他们希望领养宠物的特点值分别为 a-b 和 a+b，那么特点值为 a-b 的那个领养者将成功领养该宠物。一个领养者领养了一个特点值为 a 的宠物，而它本身希望领养的宠物的特点值为 b，那么这个领养者的不满意程度为 |a-b|。</li>
+</ol>
+<p>你得到了一年当中，领养者和被收养宠物到来收养所的情况，希望你计算所有收养了宠物的领养者的不满意程度的总和。这一年初始时，收养所里面既没有宠物，也没有领养者。</p>
+<p><strong>输入格式</strong></p>
+<p>第一行为一个正整数 n，表示一年当中来到收养所的宠物和领养者的总数；</p>
+<p>接下来的 n 行，按到来时间的先后顺序描述了一年当中来到收养所的宠物和领养者的情况。每行有两个整数 a, b，其中 a=0 表示宠物，a=1 表示领养者，正数 b 表示宠物的特点值或是领养者希望领养宠物的特点值。</p>
+<p>同一时间呆在收养所中的，要么全是宠物，要么全是领养者，这些宠物和领养者的个数不会超过 10^4 个。</p>
+<p><strong>输出格式</strong></p>
+<p>仅有一个正整数，表示一年当中所有收养了宠物的领养者的不满意程度的总和对 10^6 取模以后的结果。</p>
+<p><strong>样例</strong></p>
+<p><strong>Input</strong></p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">0 2</span><br><span class="line">0 4</span><br><span class="line">1 3</span><br><span class="line">1 2</span><br><span class="line">1 5</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>Output</strong></p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>数据范围与提示</strong></p>
+<p>对于全部数据，有 1&lt;=n&lt;=8*10^4。</p>
+</blockquote>
+<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>这道题就是一道模拟，用set进行存储，用 lower_bound 进行查找比他大一点的，再减一就是比他小一点的。</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,ans=<span class="number">0</span>,sipet=<span class="number">0</span>,sipeo=<span class="number">0</span>;</span><br><span class="line">set&lt;<span class="keyword">int</span>&gt; pet,peo;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">int</span> flag,a;</span><br><span class="line">	<span class="keyword">while</span>(n--)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;flag,&amp;a);</span><br><span class="line">		<span class="keyword">if</span>(flag==<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(sipet&gt;=sipeo)&#123;</span><br><span class="line">				pet.<span class="built_in">emplace</span>(a);</span><br><span class="line">				++sipet;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">auto</span> it1=peo.<span class="built_in">lower_bound</span>(a);</span><br><span class="line">				<span class="keyword">if</span>(it1==peo.<span class="built_in">end</span>())&#123;</span><br><span class="line">					--it1;</span><br><span class="line">					<span class="keyword">int</span> jj=*it1;</span><br><span class="line">					ans+=a-jj;ans%=<span class="number">1000000</span>;</span><br><span class="line">					--sipeo;</span><br><span class="line">					peo.<span class="built_in">erase</span>(it1);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">if</span>(it1==peo.<span class="built_in">begin</span>())&#123;</span><br><span class="line">						<span class="keyword">int</span> jj=*it1;</span><br><span class="line">						ans+=jj-a;ans%=<span class="number">1000000</span>;</span><br><span class="line">						--sipeo;</span><br><span class="line">						peo.<span class="built_in">erase</span>(it1);</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span>&#123;</span><br><span class="line">						<span class="keyword">auto</span> it2=it1;--it2;</span><br><span class="line">						<span class="keyword">int</span> jj=*it1,kk=*it2;</span><br><span class="line">						<span class="keyword">if</span>(a-kk&lt;=jj-a)&#123;</span><br><span class="line">							ans+=a-kk;ans%=<span class="number">1000000</span>;</span><br><span class="line">							--sipeo;</span><br><span class="line">							peo.<span class="built_in">erase</span>(it2);</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">else</span>&#123;</span><br><span class="line">							ans+=jj-a;ans%=<span class="number">1000000</span>;</span><br><span class="line">							--sipeo;</span><br><span class="line">							peo.<span class="built_in">erase</span>(it1);</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(sipeo&gt;=sipet)&#123;</span><br><span class="line">				peo.<span class="built_in">emplace</span>(a);</span><br><span class="line">				++sipeo;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">auto</span> it1=pet.<span class="built_in">lower_bound</span>(a);</span><br><span class="line">				<span class="keyword">if</span>(it1==pet.<span class="built_in">end</span>())&#123;</span><br><span class="line">					--it1;</span><br><span class="line">					<span class="keyword">int</span> jj=*it1;</span><br><span class="line">					ans+=a-jj;ans%=<span class="number">1000000</span>;</span><br><span class="line">					--sipet;</span><br><span class="line">					pet.<span class="built_in">erase</span>(it1);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">if</span>(it1==pet.<span class="built_in">begin</span>())&#123;</span><br><span class="line">						<span class="keyword">int</span> jj=*it1;</span><br><span class="line">						ans+=jj-a;ans%=<span class="number">1000000</span>;</span><br><span class="line">						--sipet;</span><br><span class="line">						pet.<span class="built_in">erase</span>(it1);</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span>&#123;</span><br><span class="line">						<span class="keyword">auto</span> it2=it1;--it2;</span><br><span class="line">						<span class="keyword">int</span> jj=*it1,kk=*it2;</span><br><span class="line">						<span class="keyword">if</span>(a-kk&lt;=jj-a)&#123;</span><br><span class="line">							ans+=a-kk;ans%=<span class="number">1000000</span>;</span><br><span class="line">							--sipet;</span><br><span class="line">							pet.<span class="built_in">erase</span>(it2);</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">else</span>&#123;</span><br><span class="line">							ans+=jj-a;ans%=<span class="number">1000000</span>;</span><br><span class="line">							--sipet;</span><br><span class="line">							pet.<span class="built_in">erase</span>(it1);</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">solve</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="A题-Double-Queue"><a href="#A题-Double-Queue" class="headerlink" title="A题: Double Queue"></a>A题: Double Queue</h4><p><a target="_blank" rel="noopener" href="http://poj.org/problem?id=3481">题目传送门</a></p>
+<h5 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h5><blockquote>
+<p>The new founded Balkan Investment Group Bank (BIG-Bank) opened a new office in Bucharest, equipped with a modern computing environment provided by IBM Romania, and using modern information technologies. As usual, each client of the bank is identified by a positive integer <em>K</em> and, upon arriving to the bank for some services, he or she receives a positive integer priority <em>P</em>. One of the inventions of the young managers of the bank shocked the software engineer of the serving system. They proposed to break the tradition by sometimes calling the serving desk with the <strong>lowest</strong> priority instead of that with the highest priority. Thus, the system will receive the following types of request:</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>The system needs to stop serving</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 <em>K</em> <em>P</em></td>
+<td>Add client <em>K</em> to the waiting list with priority <em>P</em></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Serve the client with the highest priority and drop him or her from the waiting list</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Serve the client with the lowest priority and drop him or her from the waiting list</td>
+</tr>
+</tbody></table>
+<p>Your task is to help the software engineer of the bank by writing a program to implement the requested serving policy.</p>
+<p><strong>Input</strong></p>
+<p>Each line of the input contains one of the possible requests; only the last line contains the stop-request (code 0). You may assume that when there is a request to include a new client in the list (code 1), there is no other request in the list of the same client or with the same priority. An identifier <em>K</em> is always less than 10^6 , and a priority <em>P</em> is less than 10^7 . The client may arrive for being served multiple times, and each time may obtain a different priority.</p>
+<p><strong>Output</strong></p>
+<p>For each request with code 2 or 3, the program has to print, in a separate line of the standard output, the identifier of the served client. If the request arrives when the waiting list is empty, then the program prints zero (0) to the output.</p>
+<p><strong>Sample Input</strong></p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">1 20 14</span><br><span class="line">1 30 3</span><br><span class="line">2</span><br><span class="line">1 10 99</span><br><span class="line">3</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>Sample Output</strong></p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">20</span><br><span class="line">30</span><br><span class="line">10</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+</blockquote>
+</blockquote>
+<h5 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h5><p>可以使用 set&lt;pair&lt;int,int&gt; &gt; 进行存储数据，根据优先级进行排序，若 set&lt; int &gt; a，则 a.begin() 即为 a 中最小值的迭代器， a.end() - 1 即为 a 中最大值的迭代器(不越界的情况下)。</p>
+<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">P</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> pri,num;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(P jj,P kk)&#123;</span><br><span class="line">		<span class="keyword">return</span> jj.pri&lt;kk.pri;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">set&lt;P&gt; se;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> flag;</span><br><span class="line">	<span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;flag)&amp;&amp;flag)&#123;</span><br><span class="line">		<span class="keyword">if</span>(flag==<span class="number">1</span>)&#123;</span><br><span class="line">			P jj;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;jj.num,&amp;jj.pri);</span><br><span class="line">			se.<span class="built_in">insert</span>(jj);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(flag==<span class="number">2</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(se.<span class="built_in">size</span>()==<span class="number">0</span>)</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;0\n&quot;</span>);</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				set&lt;P&gt;::iterator it=se.<span class="built_in">end</span>();--it;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,it-&gt;num);</span><br><span class="line">				se.<span class="built_in">erase</span>(it);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(se.<span class="built_in">size</span>()==<span class="number">0</span>)</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;0\n&quot;</span>);</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				set&lt;P&gt;::iterator it=se.<span class="built_in">begin</span>();</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,it-&gt;num);</span><br><span class="line">				se.<span class="built_in">erase</span>(it);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">solve</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>splay树和主席树确实是还没看懂，用set水了三道题，尽量掌握 set 的各种用法吧。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2021ACM%E5%AF%92%E5%81%87%E9%9B%86%E8%AE%AD/" rel="tag">2021ACM寒假集训</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-1-19" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -317,13 +457,15 @@
 <p><strong>原题来自：HNOI 2002</strong></p>
 <p>Tiger 最近被公司升任为营业部经理，他上任后接受公司交给的第一项任务便是统计并分析公司成立以来的营业情况。</p>
 <p>Tiger 拿出了公司的账本，账本上记录了公司成立以来每天的营业额。分析营业情况是一项相当复杂的工作。由于节假日，大减价或者是其他情况的时候，营业额会出现一定的波动，当然一定的波动是能够接受的，但是在某些时候营业额突变得很高或是很低，这就证明公司此时的经营状况出现了问题。</p>
-<p>经济管理学上定义了一种最小波动值来衡量这种情况：记该天以前某一天的营业额为 a_i，该天营业额为 b，则该天的最小波动值<br>$$<br>\delta=\min |a_i-b|<br>$$<br>，当最小波动值越大时，就说明营业情况越不稳定。而分析整个公司的从成立到现在营业情况是否稳定，只需要把每一天的最小波动值加起来就可以了。</p>
+<p>经济管理学上定义了一种最小波动值来衡量这种情况：记该天以前某一天的营业额为 a_i，该天营业额为 b，则该天的最小波动值 <img src="/2022/01/19/1-19/t1.png" alt="t1">，当最小波动值越大时，就说明营业情况越不稳定。而分析整个公司的从成立到现在营业情况是否稳定，只需要把每一天的最小波动值加起来就可以了。</p>
 <p>你的任务就是编写一个程序帮助 Tiger 来计算这一个值，第一天的最小波动值为第一天的营业额。</p>
-<h4 id="一句话题意"><a href="#一句话题意" class="headerlink" title="一句话题意"></a>一句话题意</h4><p>给出一个 n 个数的数列 {a_n}，对于第 i 个元素 a_i，定义<br>$$<br>f_i=\min |a_i-a_j|其中 1\le j\lt i,f_1=a_1<br>$$<br>求<br>$$<br>\sum f_i。<br>$$<br><strong>输入格式</strong></p>
+<h4 id="一句话题意"><a href="#一句话题意" class="headerlink" title="一句话题意"></a>一句话题意</h4><p><img src="/2022/01/19/1-19/t2.png" alt="t2"></p>
+<p><strong>输入格式</strong></p>
 <p>第一行为正整数，表示该公司从成立一直到现在的天数；</p>
 <p>接下来的 n 行每行有一个整数，表示第 i 天公司的营业额 a_i。</p>
 <p><strong>输出格式</strong></p>
-<p>仅有一个正整数，即每一天最小波动的和，结果不超过<br>$$<br>2^{31}<br>$$<br><strong>样例</strong></p>
+<p>仅有一个正整数，即每一天最小波动的和，结果不超过 2^31.</p>
+<p><strong>样例</strong></p>
 <p><strong>Input</strong></p>
 <blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">5</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">5</span><br><span class="line">4</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
@@ -332,11 +474,11 @@
 <blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">12</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p>$$<br>5+∣1−5∣+∣2−1∣+∣5−5∣+∣4−5∣+∣6−5∣=5+4+1+0+1+1=12<br>$$</p>
+<p>5+∣1−5∣+∣2−1∣+∣5−5∣+∣4−5∣+∣6−5∣= 5 + 4 + 1 + 0 + 1 + 1 = 12</p>
 <p><strong>数据范围与提示</strong></p>
-<p>对于全部数据<br>$$<br>1\le n\lt 2^{15},|a_i|\le 10^6<br>$$</p>
+<p><img src="/2022/01/19/1-19/t3.png" alt="t3"></p>
 </blockquote>
-<h5 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h5><p>给出一个 n 个数的数列 {a_n}，对于第 i 个元素 a_i，定义<br>$$<br>f_i=\min |a_i-a_j|其中 1\le j\lt i,f_1=a_1<br>$$<br>求<br>$$<br>\sum f_i。<br>$$</p>
+<h5 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h5><p><img src="/2022/01/19/1-19/t2.png" alt="t2"></p>
 <h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>由于数据量过大，我们需要使用splay树数据结构进行解题，但是，这道题也可以使用stl里的set进行解题</p>
 <p>set里面有内置的 lower_bound 函数和 upper_bound 函数，可以在极短的时间查找到大于或大于等于一个数的数的迭代器，这个迭代器减一即为小于等于这个数的数的迭代器。</p>
 <h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">set&lt;<span class="keyword">int</span>&gt; se;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">int</span> jj,ans=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;jj);</span><br><span class="line">	se.<span class="built_in">emplace</span>(jj);</span><br><span class="line">	ans+=jj;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;jj);</span><br><span class="line">		<span class="keyword">int</span> temp;</span><br><span class="line">		<span class="keyword">auto</span> kk=se.<span class="built_in">lower_bound</span>(jj);</span><br><span class="line">		<span class="keyword">if</span>(kk==se.<span class="built_in">end</span>())&#123;</span><br><span class="line">			--kk;</span><br><span class="line">			temp=jj-*kk;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			temp=*kk-jj;</span><br><span class="line">			<span class="keyword">if</span>(kk!=se.<span class="built_in">begin</span>())&#123;</span><br><span class="line">				--kk;</span><br><span class="line">				temp=<span class="built_in">min</span>(temp,jj-*kk);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		ans+=temp;</span><br><span class="line">		se.<span class="built_in">emplace</span>(jj);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//	int t;scanf(&quot;%d&quot;,&amp;t);</span></span><br><span class="line"><span class="comment">//	while(t--)</span></span><br><span class="line">		<span class="built_in">solve</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1254,142 +1396,6 @@
 <p>第一题我看着和昨天的那道”石子合并”挺像的，但就是不知道怎么类比过去，看了半天就是不知道该怎么写。其他题看着也都好难，思路也都想不出来。</p>
 <h3 id="关于昨晚的CF"><a href="#关于昨晚的CF" class="headerlink" title="关于昨晚的CF"></a>关于昨晚的CF</h3><p><a target="_blank" rel="noopener" href="https://shaun-2314.github.io/2022/01/11/cfRound-764-Div-3-Summary/">CF Round #764 (Div. 3)总结</a></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>进阶dp(还有基础dp)现在还是软肋，仍需大量练习理解。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2021ACM%E5%AF%92%E5%81%87%E9%9B%86%E8%AE%AD/" rel="tag">2021ACM寒假集训</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-1-10" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2022/01/10/1-10/" class="article-date">
-      <time datetime="2022-01-10T12:05:24.000Z" itemprop="datePublished">2022-01-10</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2022/01/10/1-10/">每日总结-1月10日</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="dp进阶"><a href="#dp进阶" class="headerlink" title="dp进阶"></a>dp进阶</h2><p>区间dp&amp;树形dp&amp;概率dp&amp;数位dp</p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>今天没有弄题目，就在网上找资料学习和做题。</p>
-<p>感觉这一部分好难，不太好理解，难以运用。需要大量的练习。</p>
-<h3 id="区间dp"><a href="#区间dp" class="headerlink" title="区间dp"></a>区间dp</h3><p>区间类动态规划是线性动态规划的扩展，它在分阶段地划分问题时，与阶段中元素出现的顺序和由前一阶段的哪些元素合并而来有很大的关系。</p>
-<p>令状态 f(i,j) 表示将下标位置 i 到 j 的所有元素合并能获得的价值的最大值，那么 <code>f(i,j)=max&#123;f(i,k)+f(k+1,j)+cost&#125;</code> ， cost 为将这两组元素合并起来的代价。</p>
-<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
-<li>合并：将两个或多个部分进行整合，当然也可以反过来。</li>
-<li>特征：能将问题分解为能两两合并的形式。</li>
-<li>求解：对整个问题设最优质，枚举合并点，将问题分解为左右两个部分，最后合并两个部分的最优值得到原问题的最优值。</li>
-</ul>
-<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p><a target="_blank" rel="noopener" href="https://loj.ac/p/10147">石子合并</a></p>
-<h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h5><p>将 n 堆石子绕圆形操场排放，现要将石子有序地合并成一堆。规定每次只能选相邻的两堆合并成新的一堆，并将新的一堆的石子数记做该次合并的得分。</p>
-<p>请编写一个程序，读入堆数 n 及每堆的石子数，并进行如下计算：</p>
-<ol>
-<li>选择一种合并石子的方案，使得做 n-1 次合并得分总和最大。</li>
-<li>选择一种合并石子的方案，使得做 n-1 次合并得分总和最小。</li>
-</ol>
-<p><strong>输入格式</strong></p>
-<p>输入第一行一个整数 n ，表示有 n 堆石子。</p>
-<p>第二行 n 个整数，表示每堆石子的数量。</p>
-<p><strong>输出格式</strong></p>
-<p>输出共两行：</p>
-<p>第一行为合并得分总和最小值，</p>
-<p>第二行为合并得分总和最大值。</p>
-<p><strong>样例</strong></p>
-<p><em>输入</em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">4 5 9 4</span><br></pre></td></tr></table></figure>
-
-<p><em>输出</em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">43</span><br><span class="line">54</span><br></pre></td></tr></table></figure>
-
-<p><strong>数据范围与提示</strong></p>
-<p>对于 100% 的数据，有 1 ≤ n ≤ 200 。</p>
-<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p><strong>状态转移方程</strong></p>
-<p><img src="/2022/01/10/1-10/function1.png" alt="状态转移方程"></p>
-<p><strong>环的处理</strong></p>
-<p>将链延长至两倍，变成 2*n 堆，其中第 i 堆与第 n+i 堆相同，用动态规划求解后，取 f(1,n),f(2,n+1),…,f(i,n+i-1) 中的最优值，即为最后的答案。</p>
-<p><strong>时间复杂度</strong></p>
-<p>O(n³)</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; P;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXX=<span class="number">210</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">0.0000001</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">2</span>*MAXX],sum[<span class="number">2</span>*MAXX],dpmax[<span class="number">2</span>*MAXX][<span class="number">2</span>*MAXX],dpmin[<span class="number">2</span>*MAXX][<span class="number">2</span>*MAXX];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve_it</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">int</span> n2=n*<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">		a[n+i]=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n2;++i)</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line">	<span class="built_in">memset</span>(dpmin,Inf,<span class="built_in"><span class="keyword">sizeof</span></span>(dpmin));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n2;++i)</span><br><span class="line">		dpmin[i][i]=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> c=<span class="number">2</span>;c&lt;=n;++c)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n2;++i)&#123;</span><br><span class="line">			<span class="keyword">int</span> j=i+c<span class="number">-1</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=i;k&lt;j&amp;&amp;k&lt;n2;++k)&#123;</span><br><span class="line">				dpmax[i][j]=<span class="built_in">max</span>(dpmax[i][j],dpmax[i][k]+dpmax[k+<span class="number">1</span>][j]+sum[j]-sum[i<span class="number">-1</span>]);</span><br><span class="line">				dpmin[i][j]=<span class="built_in">min</span>(dpmin[i][j],dpmin[i][k]+dpmin[k+<span class="number">1</span>][j]+sum[j]-sum[i<span class="number">-1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> ansmax=dpmax[<span class="number">1</span>][n],ansmin=dpmin[<span class="number">1</span>][n];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		ansmax=<span class="built_in">max</span>(ansmax,dpmax[i][i+n<span class="number">-1</span>]);</span><br><span class="line">		ansmin=<span class="built_in">min</span>(ansmin,dpmin[i][i+n<span class="number">-1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n%d\n&quot;</span>,ansmin,ansmax);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//	int t;scanf(&quot;%d&quot;,&amp;t);</span></span><br><span class="line"><span class="comment">//	while(t--)</span></span><br><span class="line">		<span class="built_in">solve_it</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="树形dp"><a href="#树形dp" class="headerlink" title="树形dp"></a>树形dp</h3><p>就是在树上进行的dp(确信)</p>
-<ul>
-<li>一般为递归实现</li>
-</ul>
-<h4 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1352">没有上司的舞会</a></p>
-<h5 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h5><p>某大学有 n 个职员，编号为 1…n 。</p>
-<p>他们之间有从属关系，也就是说他们的关系就像一棵以校长为根的树，父结点就是子结点的直接上司。</p>
-<p>现在有个周年庆宴会，宴会每邀请来一个职员都会增加一定的快乐指数 r_i，但是呢，如果某个职员的直接上司来参加舞会了，那么这个职员就无论如何也不肯来参加舞会了。</p>
-<p>所以，请你编程计算，邀请哪些职员可以使快乐指数最大，求最大的快乐指数。</p>
-<p><strong>输入格式</strong></p>
-<p>输入的第一行是一个整数 n。</p>
-<p>第 22 到第 (n + 1) 行，每行一个整数，第 (i + 1) 行的整数表示 i<em>i</em> 号职员的快乐指数 r_i 。</p>
-<p>第 (n + 2) 到第 2n2<em>n</em> 行，每行输入一对整数 l , k ，代表 k 是 l 的直接上司。</p>
-<p><strong>输出格式</strong></p>
-<p>输出一行一个整数代表最大的快乐指数。</p>
-<p><strong>输入输出样例</strong></p>
-<p><em>输入</em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1 3</span><br><span class="line">2 3</span><br><span class="line">6 4</span><br><span class="line">7 4</span><br><span class="line">4 5</span><br><span class="line">3 5</span><br></pre></td></tr></table></figure>
-
-<p><em>输出</em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
-
-<p><strong>数据范围</strong></p>
-<p>对于 100% 的数据，保证 1 ≤ n ≤ 6 * 10³ , -128 ≤ r_i ≤ 127 , 1 ≤ l,k ≤ n，且给出的关系一定是一棵树。</p>
-<h5 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h5><p>用 f(i,0/1) 代表以 i 为根的子树的最优解 (0表示 i 不参加舞会，1表示 i 参加舞会)。</p>
-<p><strong>状态转移方程</strong></p>
-<ul>
-<li>f(i,0) = ∑max{f(x,1),f(x,0)} (上司不参加舞会，下属可参加可不参加)</li>
-<li>f(i,1) = ∑f(x,0) + a_i (上司参加舞会，下属不参加)</li>
-</ul>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; P;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXX=<span class="number">6005</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">0.0000001</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[MAXX],ans[MAXX][<span class="number">2</span>],in[MAXX];</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; son[MAXX];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> flag)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(ans[now][flag]!=Inf)</span><br><span class="line">		<span class="keyword">return</span> ans[now][flag];</span><br><span class="line">	<span class="keyword">if</span>(flag==<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">int</span> re=a[now];</span><br><span class="line">		<span class="keyword">int</span> si=son[now].<span class="built_in">size</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;si;++i)</span><br><span class="line">			re+=<span class="built_in">dfs</span>(son[now][i],<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">return</span> ans[now][flag]=re;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> re=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> si=son[now].<span class="built_in">size</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;si;++i)</span><br><span class="line">			re+=<span class="built_in">max</span>(<span class="built_in">dfs</span>(son[now][i],<span class="number">1</span>),<span class="built_in">dfs</span>(son[now][i],<span class="number">0</span>));</span><br><span class="line">		<span class="keyword">return</span> ans[now][flag]=re;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve_it</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i)&#123;</span><br><span class="line">		<span class="keyword">int</span> jj,kk;<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;jj,&amp;kk);</span><br><span class="line">		son[kk].<span class="built_in">emplace_back</span>(jj);</span><br><span class="line">		in[jj]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">memset</span>(ans,Inf,<span class="built_in"><span class="keyword">sizeof</span></span>(ans));</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!in[i])&#123;</span><br><span class="line">			ans=<span class="built_in">max</span>(<span class="built_in">dfs</span>(i,<span class="number">0</span>),<span class="built_in">dfs</span>(i,<span class="number">1</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//	int t;scanf(&quot;%d&quot;,&amp;t);</span></span><br><span class="line"><span class="comment">//	while(t--)</span></span><br><span class="line">		<span class="built_in">solve_it</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
