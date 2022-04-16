@@ -4,11 +4,16 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="每日总结-1月10日, Shaun">
-    <meta name="description" content="dp进阶区间dp&amp;amp;树形dp&amp;amp;概率dp&amp;amp;数位dp
-前言今天没有弄题目，就在网上找资料学习和做题。
-感觉这一部分好难，不太好理解，难以运用。需要大量的练习。
-区间dp区间类动态规划是线性动态规划的扩展，它在分阶段地划分问">
+    <meta name="keywords" content="博客的评论系统的搭建, Shaun">
+    <meta name="description" content="对博客进行评论系统的搭建
+选择了使用Waline进行搭建
+
+步骤我是按照官方文档中的快速上手作为教程进行搭建的。
+
+LeanCloud 设置(数据库)
+使用lendcloud，可以在此进行数据储存等操作，评论的数据管理就在此
+
+Vercel">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +25,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>每日总结-1月10日 | Shaun</title>
+    <title>博客的评论系统的搭建 | Shaun</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -229,12 +234,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">每日总结-1月10日</h1>
+                    <h1 class="description center-align post-title">博客的评论系统的搭建</h1>
                 </div>
             </div>
         </div>
@@ -350,12 +355,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/acm/">
-                                <span class="chip bg-color">acm</span>
+                            <a href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">
+                                <span class="chip bg-color">评论系统</span>
                             </a>
                         
-                            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                                <span class="chip bg-color">动态规划</span>
+                            <a href="/tags/Waline/">
+                                <span class="chip bg-color">Waline</span>
                             </a>
                         
                     </div>
@@ -366,8 +371,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/2021ACM%E5%AF%92%E5%81%87%E9%9B%86%E8%AE%AD/" class="post-category">
-                                2021ACM寒假集训
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="post-category">
+                                博客搭建
                             </a>
                         
                     </div>
@@ -379,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-10
+                    2022-04-16
                 </div>
                 
 
@@ -388,7 +393,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    166
                 </div>
                 
 
@@ -405,81 +410,24 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="dp进阶"><a href="#dp进阶" class="headerlink" title="dp进阶"></a>dp进阶</h2><p>区间dp&amp;树形dp&amp;概率dp&amp;数位dp</p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>今天没有弄题目，就在网上找资料学习和做题。</p>
-<p>感觉这一部分好难，不太好理解，难以运用。需要大量的练习。</p>
-<h3 id="区间dp"><a href="#区间dp" class="headerlink" title="区间dp"></a>区间dp</h3><p>区间类动态规划是线性动态规划的扩展，它在分阶段地划分问题时，与阶段中元素出现的顺序和由前一阶段的哪些元素合并而来有很大的关系。</p>
-<p>令状态 f(i,j) 表示将下标位置 i 到 j 的所有元素合并能获得的价值的最大值，那么 <code>f(i,j)=max{f(i,k)+f(k+1,j)+cost}</code> ， cost 为将这两组元素合并起来的代价。</p>
-<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
-<li>合并：将两个或多个部分进行整合，当然也可以反过来。</li>
-<li>特征：能将问题分解为能两两合并的形式。</li>
-<li>求解：对整个问题设最优质，枚举合并点，将问题分解为左右两个部分，最后合并两个部分的最优值得到原问题的最优值。</li>
+                <h2 id="对博客进行评论系统的搭建"><a href="#对博客进行评论系统的搭建" class="headerlink" title="对博客进行评论系统的搭建"></a>对博客进行评论系统的搭建</h2><ul>
+<li>选择了使用<em>Waline</em>进行搭建</li>
 </ul>
-<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p><a target="_blank" rel="noopener" href="https://loj.ac/p/10147">石子合并</a></p>
-<h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h5><p>将 n 堆石子绕圆形操场排放，现要将石子有序地合并成一堆。规定每次只能选相邻的两堆合并成新的一堆，并将新的一堆的石子数记做该次合并的得分。</p>
-<p>请编写一个程序，读入堆数 n 及每堆的石子数，并进行如下计算：</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>我是按照官方文档中的<a target="_blank" rel="noopener" href="https://waline.js.org/guide/get-started.html#leancloud-%E8%AE%BE%E7%BD%AE-%E6%95%B0%E6%8D%AE%E5%BA%93">快速上手</a>作为教程进行搭建的。</p>
 <ol>
-<li>选择一种合并石子的方案，使得做 n-1 次合并得分总和最大。</li>
-<li>选择一种合并石子的方案，使得做 n-1 次合并得分总和最小。</li>
+<li><p><strong>LeanCloud 设置(数据库)</strong></p>
+<p>使用<em>lendcloud</em>，可以在此进行数据储存等操作，评论的数据管理就在此</p>
+</li>
+<li><p><strong>Vercel 部署(服务端)</strong></p>
+<p><a target="_blank" rel="noopener" href="https://vercel.com/new/clone?repository-url=https://github.com/walinejs/waline/tree/main/example">在此</a>进行服务端的部署，连接到github，Vercel会基于Waline模板帮助你新建并初始化仓库</p>
+</li>
+<li><p><strong>HTML 引入(客户端)</strong></p>
+<p>先试一下能不能自动配置</p>
+<p>尝试了之后发现</p>
+<p>在主题中直接输入相关参数即可自动配置</p>
+</li>
 </ol>
-<p><strong>输入格式</strong></p>
-<p>输入第一行一个整数 n ，表示有 n 堆石子。</p>
-<p>第二行 n 个整数，表示每堆石子的数量。</p>
-<p><strong>输出格式</strong></p>
-<p>输出共两行：</p>
-<p>第一行为合并得分总和最小值，</p>
-<p>第二行为合并得分总和最大值。</p>
-<p><strong>样例</strong></p>
-<p><em>输入</em></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">4 5 9 4</span><br></pre></td></tr></tbody></table></figure>
-
-<p><em>输出</em></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">43</span><br><span class="line">54</span><br></pre></td></tr></tbody></table></figure>
-
-<p><strong>数据范围与提示</strong></p>
-<p>对于 100% 的数据，有 1 ≤ n ≤ 200 。</p>
-<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p><strong>状态转移方程</strong></p>
-<p><img src="/2022/01/10/1-10/function1.png" alt="状态转移方程"></p>
-<p><strong>环的处理</strong></p>
-<p>将链延长至两倍，变成 2*n 堆，其中第 i 堆与第 n+i 堆相同，用动态规划求解后，取 f(1,n),f(2,n+1),…,f(i,n+i-1) 中的最优值，即为最后的答案。</p>
-<p><strong>时间复杂度</strong></p>
-<p>O(n³)</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; P;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXX=<span class="number">210</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">0.0000001</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">2</span>*MAXX],sum[<span class="number">2</span>*MAXX],dpmax[<span class="number">2</span>*MAXX][<span class="number">2</span>*MAXX],dpmin[<span class="number">2</span>*MAXX][<span class="number">2</span>*MAXX];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve_it</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">int</span> n2=n*<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i){</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">		a[n+i]=a[i];</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n2;++i)</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line">	<span class="built_in">memset</span>(dpmin,Inf,<span class="built_in"><span class="keyword">sizeof</span></span>(dpmin));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n2;++i)</span><br><span class="line">		dpmin[i][i]=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> c=<span class="number">2</span>;c&lt;=n;++c){</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n2;++i){</span><br><span class="line">			<span class="keyword">int</span> j=i+c<span class="number">-1</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=i;k&lt;j&amp;&amp;k&lt;n2;++k){</span><br><span class="line">				dpmax[i][j]=<span class="built_in">max</span>(dpmax[i][j],dpmax[i][k]+dpmax[k+<span class="number">1</span>][j]+sum[j]-sum[i<span class="number">-1</span>]);</span><br><span class="line">				dpmin[i][j]=<span class="built_in">min</span>(dpmin[i][j],dpmin[i][k]+dpmin[k+<span class="number">1</span>][j]+sum[j]-sum[i<span class="number">-1</span>]);</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> ansmax=dpmax[<span class="number">1</span>][n],ansmin=dpmin[<span class="number">1</span>][n];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i){</span><br><span class="line">		ansmax=<span class="built_in">max</span>(ansmax,dpmax[i][i+n<span class="number">-1</span>]);</span><br><span class="line">		ansmin=<span class="built_in">min</span>(ansmin,dpmin[i][i+n<span class="number">-1</span>]);</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n%d\n"</span>,ansmin,ansmax);</span><br><span class="line">	</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line"><span class="comment">//	int t;scanf("%d",&amp;t);</span></span><br><span class="line"><span class="comment">//	while(t--)</span></span><br><span class="line">		<span class="built_in">solve_it</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-
-
-<h3 id="树形dp"><a href="#树形dp" class="headerlink" title="树形dp"></a>树形dp</h3><p>就是在树上进行的dp(确信)</p>
-<ul>
-<li>一般为递归实现</li>
-</ul>
-<h4 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h4><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1352">没有上司的舞会</a></p>
-<h5 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h5><p>某大学有 n 个职员，编号为 1…n 。</p>
-<p>他们之间有从属关系，也就是说他们的关系就像一棵以校长为根的树，父结点就是子结点的直接上司。</p>
-<p>现在有个周年庆宴会，宴会每邀请来一个职员都会增加一定的快乐指数 r_i，但是呢，如果某个职员的直接上司来参加舞会了，那么这个职员就无论如何也不肯来参加舞会了。</p>
-<p>所以，请你编程计算，邀请哪些职员可以使快乐指数最大，求最大的快乐指数。</p>
-<p><strong>输入格式</strong></p>
-<p>输入的第一行是一个整数 n。</p>
-<p>第 22 到第 (n + 1) 行，每行一个整数，第 (i + 1) 行的整数表示 i<em>i</em> 号职员的快乐指数 r_i 。</p>
-<p>第 (n + 2) 到第 2n2<em>n</em> 行，每行输入一对整数 l , k ，代表 k 是 l 的直接上司。</p>
-<p><strong>输出格式</strong></p>
-<p>输出一行一个整数代表最大的快乐指数。</p>
-<p><strong>输入输出样例</strong></p>
-<p><em>输入</em></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1 3</span><br><span class="line">2 3</span><br><span class="line">6 4</span><br><span class="line">7 4</span><br><span class="line">4 5</span><br><span class="line">3 5</span><br></pre></td></tr></tbody></table></figure>
-
-<p><em>输出</em></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></tbody></table></figure>
-
-<p><strong>数据范围</strong></p>
-<p>对于 100% 的数据，保证 1 ≤ n ≤ 6 * 10³ , -128 ≤ r_i ≤ 127 , 1 ≤ l,k ≤ n，且给出的关系一定是一棵树。</p>
-<h5 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h5><p>用 f(i,0/1) 代表以 i 为根的子树的最优解 (0表示 i 不参加舞会，1表示 i 参加舞会)。</p>
-<p><strong>状态转移方程</strong></p>
-<ul>
-<li>f(i,0) = ∑max{f(x,1),f(x,0)} (上司不参加舞会，下属可参加可不参加)</li>
-<li>f(i,1) = ∑f(x,0) + a_i (上司参加舞会，下属不参加)</li>
-</ul>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; P;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXX=<span class="number">6005</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">0.0000001</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[MAXX],ans[MAXX][<span class="number">2</span>],in[MAXX];</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; son[MAXX];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> flag)</span></span>{</span><br><span class="line">	<span class="keyword">if</span>(ans[now][flag]!=Inf)</span><br><span class="line">		<span class="keyword">return</span> ans[now][flag];</span><br><span class="line">	<span class="keyword">if</span>(flag==<span class="number">1</span>){</span><br><span class="line">		<span class="keyword">int</span> re=a[now];</span><br><span class="line">		<span class="keyword">int</span> si=son[now].<span class="built_in">size</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;si;++i)</span><br><span class="line">			re+=<span class="built_in">dfs</span>(son[now][i],<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">return</span> ans[now][flag]=re;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">else</span>{</span><br><span class="line">		<span class="keyword">int</span> re=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> si=son[now].<span class="built_in">size</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;si;++i)</span><br><span class="line">			re+=<span class="built_in">max</span>(<span class="built_in">dfs</span>(son[now][i],<span class="number">1</span>),<span class="built_in">dfs</span>(son[now][i],<span class="number">0</span>));</span><br><span class="line">		<span class="keyword">return</span> ans[now][flag]=re;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve_it</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i){</span><br><span class="line">		<span class="keyword">int</span> jj,kk;<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;jj,&amp;kk);</span><br><span class="line">		son[kk].<span class="built_in">emplace_back</span>(jj);</span><br><span class="line">		in[jj]=<span class="number">1</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="built_in">memset</span>(ans,Inf,<span class="built_in"><span class="keyword">sizeof</span></span>(ans));</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i){</span><br><span class="line">		<span class="keyword">if</span>(!in[i]){</span><br><span class="line">			ans=<span class="built_in">max</span>(<span class="built_in">dfs</span>(i,<span class="number">0</span>),<span class="built_in">dfs</span>(i,<span class="number">1</span>));</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line"><span class="comment">//	int t;scanf("%d",&amp;t);</span></span><br><span class="line"><span class="comment">//	while(t--)</span></span><br><span class="line">		<span class="built_in">solve_it</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
+<p>流程感觉挺简便的</p>
 
                 
             </div>
@@ -506,7 +454,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://shaun-2314.github.io/2022/01/10/1-10/">http://shaun-2314.github.io/2022/01/10/1-10/</a>
+                    <a href="http://shaun-2314.github.io/2022/04/16/contact-system-building/">http://shaun-2314.github.io/2022/04/16/contact-system-building/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -544,12 +492,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/acm/">
-                                    <span class="chip bg-color">acm</span>
+                                <a href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">
+                                    <span class="chip bg-color">评论系统</span>
                                 </a>
                             
-                                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                                    <span class="chip bg-color">动态规划</span>
+                                <a href="/tags/Waline/">
+                                    <span class="chip bg-color">Waline</span>
                                 </a>
                             
                         </div>
@@ -934,17 +882,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/11/1-11/">
+                <a href="/2022/04/16/contact-system-building/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="每日总结-1月11日">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="博客的评论系统的搭建">
                         
-                        <span class="card-title">每日总结-1月11日</span>
+                        <span class="card-title">博客的评论系统的搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -954,30 +903,31 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/2021ACM%E5%AF%92%E5%81%87%E9%9B%86%E8%AE%AD/" class="post-category">
-                                    2021ACM寒假集训
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="post-category">
+                                    博客搭建
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/acm/">
-                        <span class="chip bg-color">acm</span>
+                    <a href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">评论系统</span>
                     </a>
                     
-                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                        <span class="chip bg-color">动态规划</span>
+                    <a href="/tags/Waline/">
+                        <span class="chip bg-color">Waline</span>
                     </a>
                     
                 </div>
@@ -991,13 +941,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/08/1-8/">
+                <a href="/2022/04/15/network-order/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="每日总结-1月8日">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="network_orders">
                         
-                        <span class="card-title">每日总结-1月8日</span>
+                        <span class="card-title">network_orders</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1008,14 +958,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/2021ACM%E5%AF%92%E5%81%87%E9%9B%86%E8%AE%AD/" class="post-category">
-                                    2021ACM寒假集训
+                            <a href="/categories/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    计网学习
                                 </a>
                             
                             
@@ -1025,12 +975,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/acm/">
-                        <span class="chip bg-color">acm</span>
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">计算机网络</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E8%AE%BA/">
-                        <span class="chip bg-color">数论</span>
+                    <a href="/tags/%E5%91%BD%E4%BB%A4/">
+                        <span class="chip bg-color">命令</span>
                     </a>
                     
                 </div>
