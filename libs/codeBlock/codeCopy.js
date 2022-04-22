@@ -47,7 +47,9 @@ $(function () {
     $('.code-area .fa-copy').on('click', function () {
         var selection = window.getSelection()
         var range = document.createRange()
-        range.selectNodeContents($(this).siblings('pre').find('code')[0])
+        //range.selectNodeContents(document.getElementsByTagName("pre")[1])
+        //range.selectNodeContents($(this).siblings('pre').find('code')[0])
+        range.selectNodeContents($(this).siblings('pre')[0])//
         selection.removeAllRanges()
         selection.addRange(range)
         var text = selection.toString()
