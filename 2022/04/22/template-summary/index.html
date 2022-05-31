@@ -386,7 +386,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    1.9k
                 </div>
                 
 
@@ -449,6 +449,11 @@
 
 
 <h3 id="线段树min"><a href="#线段树min" class="headerlink" title="线段树min"></a>线段树<em>min</em></h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sum[maxn&lt;&lt;<span class="number">2</span>],add[maxn&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> a[maxn],n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> rt)</span></span>{</span><br><span class="line">		sum[rt]=<span class="built_in">min</span>(sum[rt&lt;&lt;<span class="number">1</span>],sum[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> rt)</span></span>{</span><br><span class="line">	<span class="keyword">if</span>(l==r){</span><br><span class="line">		sum[rt]=a[l];</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">int</span> m=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">build</span>(l,m,rt&lt;&lt;<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">build</span>(m+<span class="number">1</span>,r,rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">pushup</span>(rt);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> rt,<span class="keyword">int</span> ln,<span class="keyword">int</span> rn)</span></span>{</span><br><span class="line">	<span class="keyword">if</span>(add[rt]){</span><br><span class="line">		add[rt&lt;&lt;<span class="number">1</span>]+=add[rt];</span><br><span class="line">		add[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]+=add[rt];</span><br><span class="line">		sum[rt&lt;&lt;<span class="number">1</span>]+=add[rt]*ln;</span><br><span class="line">		sum[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]+=add[rt]*rn;</span><br><span class="line">		add[rt]=<span class="number">0</span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span><span class="params">(<span class="keyword">int</span> L,<span class="keyword">int</span> C,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> rt)</span></span>{</span><br><span class="line">	<span class="keyword">if</span>(l==r){</span><br><span class="line">		sum[rt]=C;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">int</span> m=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(L&lt;=m) <span class="built_in">Update</span>(L,C,l,m,rt&lt;&lt;<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">Update</span>(L,C,m+<span class="number">1</span>,r,rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">pushup</span>(rt);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> L,<span class="keyword">int</span> R,<span class="keyword">int</span> C,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> rt)</span></span>{</span><br><span class="line">	<span class="keyword">if</span>(L&lt;=l&amp;&amp;r&lt;=R){</span><br><span class="line">		sum[rt]+=C*(r-l+<span class="number">1</span>);</span><br><span class="line">		add[rt]+=C;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">int</span> m=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">pushdown</span>(rt,m-l+<span class="number">1</span>,r-m);</span><br><span class="line">	<span class="keyword">if</span>(L&lt;=m) <span class="built_in">update</span>(L,R,C,l,m,rt&lt;&lt;<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">update</span>(L,R,C,m+<span class="number">1</span>,r,rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">pushup</span>(rt);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> L,<span class="keyword">int</span> R,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> rt)</span></span>{</span><br><span class="line">	<span class="keyword">if</span>(L&lt;=l&amp;&amp;r&lt;=R){</span><br><span class="line">		<span class="keyword">return</span> sum[rt];</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">int</span> m=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">pushdown</span>(rt,m-l+<span class="number">1</span>,r-m);</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="built_in">pow</span>(<span class="number">2</span>,<span class="number">31</span>)<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">if</span>(L&lt;=m)</span><br><span class="line">		ans=<span class="built_in">min</span>(ans,<span class="built_in">query</span>(L,R,l,m,rt&lt;&lt;<span class="number">1</span>));</span><br><span class="line">	<span class="keyword">if</span>(R&gt;m)</span><br><span class="line">		ans=<span class="built_in">min</span>(ans,<span class="built_in">query</span>(L,R,m+<span class="number">1</span>,r,rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>));</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">}</span><br><span class="line"><span class="comment">//Update(x+1,y,1,n,1);</span></span><br><span class="line"><span class="comment">//query(x+1,y+1,1,n,1);</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="KMP模板"><a href="#KMP模板" class="headerlink" title="KMP模板"></a>KMP模板</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> p[MAXX],s[MAXX];</span><br><span class="line"><span class="keyword">int</span> plen,slen;</span><br><span class="line"><span class="keyword">int</span> nex[MAXX];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getpmt</span><span class="params">(<span class="keyword">char</span> longer[],<span class="keyword">int</span> lolen,<span class="keyword">int</span> next[])</span></span>{</span><br><span class="line">	next[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;=lolen){</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">0</span>||longer[i]==longer[j]) next[++i]=++j;</span><br><span class="line">		<span class="keyword">else</span> j=next[j];</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getans</span><span class="params">(<span class="keyword">char</span> longer[],<span class="keyword">int</span> lolen,<span class="keyword">char</span> shorter[],<span class="keyword">int</span> shlen)</span></span>{</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;i&lt;=lolen;i++){</span><br><span class="line">		<span class="keyword">while</span>(j&gt;<span class="number">0</span>&amp;&amp;s[i]!=p[j])</span><br><span class="line">			j=nex[j];</span><br><span class="line">		<span class="keyword">if</span>(j==shlen){</span><br><span class="line">			<span class="comment">//do something</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,i-shlen+<span class="number">1</span>);</span><br><span class="line">			<span class="comment">//</span></span><br><span class="line">			j=nex[j+<span class="number">1</span>]<span class="number">-1</span>;</span><br><span class="line">		}</span><br><span class="line">		j++;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>);</span><br><span class="line"><span class="built_in">getchar</span>();<span class="built_in">scanf</span>(<span class="string">"%s"</span>,p+<span class="number">1</span>);</span><br><span class="line">plen=<span class="built_in">strlen</span>(p+<span class="number">1</span>);slen=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line"><span class="built_in">getpmt</span>(p,plen,nex);</span><br><span class="line"><span class="built_in">getans</span>(s,slen,p,plen);</span><br></pre></td></tr></tbody></table></figure>
+
 
 
                 
@@ -540,132 +545,6 @@
 
                 </div>
             </div>
-            
-                <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
-    }
-
-    #reward .reward-link {
-        font-size: 1.4rem;
-        line-height: 38px;
-    }
-
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
-    }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .close:hover {
-        color: #ef5350;
-        transform: scale(1.3);
-        -moz-transform:scale(1.3);
-        -webkit-transform:scale(1.3);
-        -o-transform:scale(1.3);
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-content ul {
-        padding-left: 0 !important;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        background-color: #ccc;
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff !important;
-        background-color: #22AB38 !important;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff !important;
-        background-color: #019FE8 !important;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
-    }
-</style>
-
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
             
         </div>
     </div>
@@ -1195,7 +1074,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">20.3k</span>
+                        class="white-color">20.5k</span>
             
             
             
