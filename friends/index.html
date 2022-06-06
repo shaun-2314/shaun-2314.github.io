@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="标签: 数论, Shaun">
+    <meta name="keywords" content="friends, Shaun">
     <meta name="description" content="This is Shaun&#39;s blogs">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>标签: 数论 | Shaun</title>
+    <title>friends | Shaun</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -291,215 +291,495 @@
 
     </div>
 </div>
+<style>
+    .friends-container {
+        margin-top: -100px;
+        margin-bottom: 30px;
+    }
+
+    .friends-container .tag-title {
+        margin-bottom: 10px;
+        color: #3C4858;
+        font-size: 1.75rem;
+        font-weight: 400;
+    }
+
+    .frind-ship img {
+        border-radius: 50%;
+    }
+
+    /* 一下是按钮样式 */
+
+    .frind-ship {
+        padding: 10px 20px;
+    }
+
+    .frind-ship .title {
+        display: flex;
+        align-items: center;
+    }
+
+    .frind-ship .title div {
+        color: #fff;
+        padding-left: 10px;
+    }
+
+    .frind-ship .title img {
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+    }
+
+    .frind-ship .title h1 {
+        padding-bottom: 5px;
+        border-bottom: 2px solid #fff;
+        position: relative;
+        top:-15px;
+        left: 3px;
+    }
+
+    .friend-button {
+        display: flex;
+        justify-content: center;
+        margin-bottom: -27px;
+    }
+
+    .friend-button a {
+        border-radius: 40px;
+    }
+
+    .friend-all .tag-post {
+        margin-bottom: 30px;
+    }
+
+    .button-caution {
+        background-color: #FF4351;
+        border-color: #FF4351;
+        color: #FFF;
+    }
+
+    .button {
+        font-weight: 300;
+        font-size: 16px;
+        font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        text-decoration: none;
+        text-align: center;
+        line-height: 40px;
+        height: 40px;
+        padding: 0 40px;
+        margin: 0;
+        display: inline-block;
+        appearance: none;
+        cursor: pointer;
+        border: none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: .3s;
+        transition-duration: .3s;
+    }
+
+    .title {
+        margin-bottom: 0rem !important;
+    }
+
+    .card {
+        margin: 3rem 0 1rem 0 !important;
+    }
+
+    .button-glow.button-caution {
+        -webkit-animation-name: glowing-caution;
+        animation-name: glowing-caution;
+    }
+
+    @-webkit-keyframes glowing-caution {
+        from {
+            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+        }
+
+        50% {
+            -webkit-box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
+            box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
+        }
+
+        to {
+            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+        }
+    }
+
+    @keyframes glowing-caution {
+        from {
+            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+        }
+
+        50% {
+            -webkit-box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
+            box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
+        }
+
+        to {
+            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+        }
+    }
+
+    .button-caution:hover {
+        background-color: #ff7680;
+        border-color: #ff7680;
+        color: #FFF;
+        text-decoration: none;
+    }
+
+    .frind-card1 {
+        background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .frind-card2 {
+        background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .frind-card3 {
+        background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+    }
+
+    .frind-card4 {
+        background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    }
+
+    .frind-card5 {
+        background-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+    }
+
+    .frind-card6 {
+        background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+    }
+
+    .frind-card7 {
+        background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+    }
+
+    .frind-card8 {
+        background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
+    }
+
+    .frind-card9 {
+        background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
+    }
+
+    .frind-card10 {
+        background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+    }
+
+    article .card {
+        overflow: visible !important;
+    }
+</style>
 
 <main class="content">
-
-    
-
-<div id="tags" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
+    <div class="container friends-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="tag-title center-align">
+                    <i class="fas fa-address-book"></i>&nbsp;&nbsp;大佬们的博客
+                </div>
+                <article id="friends-link">
+                    
+                    
+                    <div class="row tags-posts friend-all">
+                        
+                        
+                        <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
+                            <div class="card frind-card1">
+                                <div class="frind-ship">
+                                    <div class="title">
+                                        <img src="https://lc-gluttony.s3.amazonaws.com/KFh5C7pGwsrM/ubmkGWv2G5dWwXTBu2kAFzprq22nWef2/lichun.jpg" alt="img">
+                                        <div>
+                                            <h1 class="friend-name">玛卡巴卡</h1>
+                                            <p style="position: relative;top: -35px;">憨批</p>
+                                        </div>
+                                    </div>
+                                    <div class="friend-button">
+                                        <a href="http://43.138.23.135/" target="_blank"
+                                            class="button button-glow button-rounded button-caution">
+                                            来康康
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
+                            <div class="card frind-card2">
+                                <div class="frind-ship">
+                                    <div class="title">
+                                        <img src="https://lc-gluttony.s3.amazonaws.com/KFh5C7pGwsrM/M9bY4Wc7qvAFC7reaCz2j5KXPxKiDOrf/liujincheng.jpg" alt="img">
+                                        <div>
+                                            <h1 class="friend-name">miical</h1>
+                                            <p style="position: relative;top: -35px;">憨批</p>
+                                        </div>
+                                    </div>
+                                    <div class="friend-button">
+                                        <a href="https://miical.herokuapp.com/" target="_blank"
+                                            class="button button-glow button-rounded button-caution">
+                                            来康康
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </article>
             </div>
-            <div class="tag-chips">
-                
-                
-                <a href="/tags/acm/" title="acm: 15">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="acm" style="background-color: #F9EBEA;">acm
-                        <span class="tag-length">15</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="动态规划" style="background-color: #F5EEF8;">动态规划
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E6%90%9C%E7%B4%A2/" title="搜索: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="搜索" style="background-color: #D5F5E3;">搜索
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%9B%BE%E8%AE%BA/" title="图论: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="图论" style="background-color: #E8F8F5;">图论
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/" title="博弈论: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="博弈论" style="background-color: #FEF9E7;">博弈论
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="数据结构" style="background-color: #F8F9F9;">数据结构
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E6%95%B0%E8%AE%BA/" title="数论: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="数论" style="background-color: #82E0AA;">数论
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="博客搭建: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="博客搭建" style="background-color: #D7BDE2;">博客搭建
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/cf/" title="cf: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="cf" style="background-color: #A3E4D7;">cf
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" title="评论系统: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="评论系统" style="background-color: #85C1E9;">评论系统
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E6%9D%BF%E5%AD%90/" title="板子: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="板子" style="background-color: #F8C471;">板子
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="计算机网络" style="background-color: #F9E79F;">计算机网络
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%91%BD%E4%BB%A4/" title="命令: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="命令" style="background-color: #F8F9F9;">命令
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-            </div>
+        </div>
+
+        
+
+        <div class="card">
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+                <style>
+    .waline-card {
+        margin: 1.5rem auto;
+    }
+    .waline-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #waline p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+    #waline blockquote p {
+        text-indent: 0.2rem;
+    }
+    #waline a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+    #waline img {
+        max-width: 100%;
+        cursor: pointer;
+    }
+    #waline ol li {
+        list-style-type: decimal;
+    }
+    #waline ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+    #waline ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+    #waline ul li {
+        list-style-type: disc;
+    }
+    #waline ul ul li {
+        list-style-type: circle;
+    }
+    #waline table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+    #waline table, th, td {
+        border: 0;
+    }
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+    #waline table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+    #waline table td {
+        min-width: 80px;
+    }
+    #waline h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+    #waline h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+    #waline h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+    #waline h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+    #waline h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+    #waline h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+    #waline p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    #waline hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+    #waline blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+    #waline pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+    #waline code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+    #waline pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+    #waline pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+    #waline code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+    #waline [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+    #waline b,
+    strong {
+        font-weight: bold;
+    }
+    #waline dfn {
+        font-style: italic;
+    }
+    #waline small {
+        font-size: 85%;
+    }
+    #waline cite {
+        font-style: normal;
+    }
+    #waline mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+    #waline table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+    #waline table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+    #waline table td {
+        min-width: 80px;
+    }
+    #waline [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+  </style>
+  
+  <div class="card waline-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="waline" class="card-content" style="display: grid">
+    </div>
+  </div>
+  
+
+  <!-- <script src="//cdn.jsdelivr.net/npm/@waline/client"></script> -->
+  <script src="/libs/waline/Waline.min.js"></script>
+  <script>
+    new Waline({
+        el: '#waline',
+        serverURL: 'https://blog-contact-gbmvik3ra-shaun-2314.vercel.app/',
+        avatar: 'mm'    
+    });
+  </script> 
+            
+
+            
+
         </div>
     </div>
-</div>
-
-    
-
-    <article id="articles" class="container articles">
-        <div class="row tags-posts">
-            
-            
-            <div class="article tag-post col s12 m6 l4" data-tags="acm, 数论, 博客搭建" data-aos="fade-up">
-                <div class="card">
-                    <a href="/2022/01/08/1-8/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="每日总结-1月8日">
-                            
-                            <span class="card-title">每日总结-1月8日</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-08
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/2021ACM%E5%AF%92%E5%81%87%E9%9B%86%E8%AE%AD/" class="post-category">
-                                2021ACM寒假集训
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            
-            <div class="article tag-post col s12 m6 l4" data-tags="acm, 数论" data-aos="fade-up">
-                <div class="card">
-                    <a href="/2022/01/08/1-7/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="每日总结:1月7日">
-                            
-                            <span class="card-title">每日总结:1月7日</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-08
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/2021ACM%E5%AF%92%E5%81%87%E9%9B%86%E8%AE%AD/" class="post-category">
-                                2021ACM寒假集训
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </article>
 </main>
 
-
+<script>
+    $(function () {
+        $('#friends-link').masonry({
+            itemSelector: '.friend-div'
+        });
+    });
+</script>
 
 
     <footer class="page-footer bg-color">
