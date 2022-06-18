@@ -421,7 +421,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    2k
                 </div>
                 
 
@@ -475,6 +475,10 @@
 
 
 
+<h3 id="错位排序公式"><a href="#错位排序公式" class="headerlink" title="错位排序公式"></a>错位排序公式</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d[<span class="number">1</span>]=<span class="number">0</span>;d[<span class="number">2</span>]=<span class="number">1</span>;</span><br><span class="line">d[i]=(n<span class="number">-1</span>)*(d[i<span class="number">-1</span>]+d[i<span class="number">-2</span>]);</span><br></pre></td></tr></tbody></table></figure>
+
+
+
 <h2 id="数据结构部分"><a href="#数据结构部分" class="headerlink" title="数据结构部分"></a>数据结构部分</h2><h3 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n,c[MAXX];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> jj)</span></span>{<span class="keyword">return</span> (jj)&amp;(-jj);}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">updata</span><span class="params">(<span class="keyword">int</span> jj,<span class="keyword">int</span> kk)</span></span>{</span><br><span class="line">	<span class="keyword">while</span>(jj&lt;=n){</span><br><span class="line">		c[jj]+=kk;</span><br><span class="line">		jj+=<span class="built_in">lowbit</span>(jj);</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> jj)</span></span>{</span><br><span class="line">	<span class="keyword">int</span> ret=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(jj&gt;<span class="number">0</span>){</span><br><span class="line">		ret+=c[jj];</span><br><span class="line">		jj-=<span class="built_in">lowbit</span>(jj);</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 
@@ -492,6 +496,14 @@
 
 
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="二分-左闭右开"><a href="#二分-左闭右开" class="headerlink" title="二分(左闭右开)"></a>二分(左闭右开)</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> l=<span class="number">1</span>,r=n+<span class="number">1</span>,mid;<span class="comment">//[l,r)</span></span><br><span class="line"><span class="keyword">while</span>(l&lt;r){</span><br><span class="line">    mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">check</span>(mid))</span><br><span class="line">        l=mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        r=mid;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="离散化-最终包含重复元素"><a href="#离散化-最终包含重复元素" class="headerlink" title="离散化(最终包含重复元素)"></a>离散化(最终包含重复元素)</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line"></span><br><span class="line"><span class="comment">//包含重复元素 </span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">    s[i]=a[i];<span class="comment">//a[]为原数组 </span></span><br><span class="line"><span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line"><span class="keyword">int</span> len=<span class="built_in">unique</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>)-a<span class="number">-1</span>;<span class="comment">//去重之后的数组长度 </span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">    s[i]=<span class="built_in">lower_bound</span>(a+<span class="number">1</span>,a+len+<span class="number">1</span>,s[i])-a;<span class="comment">//s[]即为离散化之后的数组 </span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="离散化-最终不包含重复元素"><a href="#离散化-最终不包含重复元素" class="headerlink" title="离散化(最终不包含重复元素)"></a>离散化(最终不包含重复元素)</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i){</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i].first);<span class="comment">//P a[MAXX]</span></span><br><span class="line">    a[i].second=i;</span><br><span class="line">}</span><br><span class="line"><span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">    s[a[i].second]=i;<span class="comment">//s[]即为离散化之后的结果 </span></span><br></pre></td></tr></tbody></table></figure>
 
 
                 
@@ -1105,7 +1117,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">21.5k</span>
+                        class="white-color">21.7k</span>
             
             
             
