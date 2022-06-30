@@ -10,8 +10,7 @@
 有种非常秒的思路：后缀转前缀
 具体：把字符串 reverse ，再 insert 到 Trie 树里，可模拟后缀。
 
-
-KMP模">
+一定要看清">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -426,7 +425,7 @@ KMP模">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.2k
+                    2.3k
                 </div>
                 
 
@@ -447,6 +446,13 @@ KMP模">
 <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="字符串小日记"><a href="#字符串小日记" class="headerlink" title="字符串小日记"></a>字符串小日记</h3><ol>
 <li><p>有种非常秒的思路：<strong>后缀转前缀</strong></p>
 <p>具体：把字符串 <em>reverse</em> ，再 <em>insert</em> 到 <em>Trie</em> 树里，可模拟后缀。</p>
+</li>
+<li><p>一定要看清楚题目！！！！！！！</p>
+<p>一定要看清楚模式串中间有没有重复的串！！！</p>
+</li>
+<li><p>一定要看清楚具体每个字符串的数据范围，一般 <strong>MAXX</strong> 表示有几个串，但是最后的文本串可能会是 $1e6$ 的。</p>
+</li>
+<li><p>字符串的题目灵活性太高了，可以试试从多个不同的角度进行思考。感觉很多题目都是会有很多种解法(优化方法)。</p>
 </li>
 </ol>
 <h3 id="KMP模板"><a href="#KMP模板" class="headerlink" title="KMP模板"></a>KMP模板</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> l[MAXX],s[MAXX];</span><br><span class="line"><span class="keyword">int</span> lenl,lens,p[MAXX];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getpmt</span><span class="params">()</span></span>{</span><br><span class="line">	p[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;i&lt;lenl;++i){</span><br><span class="line">		<span class="keyword">while</span>(j&gt;<span class="number">0</span>&amp;&amp;s[i+<span class="number">1</span>]!=s[j+<span class="number">1</span>])</span><br><span class="line">			j=p[j];</span><br><span class="line">		<span class="keyword">if</span>(s[i+<span class="number">1</span>]==s[j+<span class="number">1</span>])</span><br><span class="line">			++j;</span><br><span class="line">		p[i+<span class="number">1</span>]=j;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getans</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;lenl;++i){</span><br><span class="line">		<span class="keyword">while</span>(j&gt;<span class="number">0</span>&amp;&amp;l[i+<span class="number">1</span>]!=s[j+<span class="number">1</span>])</span><br><span class="line">			j=p[j];</span><br><span class="line">		<span class="keyword">if</span>(l[i+<span class="number">1</span>]==s[j+<span class="number">1</span>])</span><br><span class="line">			++j;</span><br><span class="line">		<span class="keyword">if</span>(j==lens){</span><br><span class="line">			<span class="comment">//dosomething</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,i-j+<span class="number">2</span>);</span><br><span class="line">			<span class="comment">//</span></span><br><span class="line">			j=p[j];</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
@@ -1139,7 +1145,7 @@ KMP模">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.1k</span>
+                        class="white-color">25.6k</span>
             
             
             
