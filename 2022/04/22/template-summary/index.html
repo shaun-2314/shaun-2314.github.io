@@ -425,7 +425,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.6k
+                    4.8k
                 </div>
                 
 
@@ -504,6 +504,10 @@
 
 
 <h3 id="KMP求所有循环节"><a href="#KMP求所有循环节" class="headerlink" title="KMP求所有循环节"></a>KMP求所有循环节</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> jj=p[n];</span><br><span class="line"><span class="keyword">while</span>(jj!=<span class="number">0</span>){</span><br><span class="line">    ans.<span class="built_in">emplace_back</span>(n-jj);<span class="comment">//这里的 n-jj 均为循环节，ans记录所有循环节</span></span><br><span class="line">    jj=p[jj];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="扩展KMP"><a href="#扩展KMP" class="headerlink" title="扩展KMP"></a>扩展KMP</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//int z[MAXX],p[MAXX];</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Z</span><span class="params">(<span class="keyword">char</span>* s,<span class="keyword">int</span> n)</span></span>{</span><br><span class="line">	z[<span class="number">1</span>]=n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i) z[i]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>,l=<span class="number">0</span>,r=<span class="number">0</span>;i&lt;=n;++i){</span><br><span class="line">		<span class="keyword">if</span>(i&lt;=r) z[i]=<span class="built_in">min</span>(z[i-l+<span class="number">1</span>],r-i+<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">while</span>(i+z[i]&lt;=n&amp;&amp;s[i+z[i]]==s[z[i]+<span class="number">1</span>]) ++z[i];</span><br><span class="line">		<span class="keyword">if</span>(i+z[i]<span class="number">-1</span>&gt;r) l=i,r=i+z[i]<span class="number">-1</span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exkmp</span><span class="params">(<span class="keyword">char</span>* a,<span class="keyword">int</span> n,<span class="keyword">char</span>* s,<span class="keyword">int</span> m)</span></span>{</span><br><span class="line">	<span class="built_in">Z</span>(s,m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) p[i]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,l=<span class="number">0</span>,r=<span class="number">0</span>;i&lt;=n;++i){</span><br><span class="line">		<span class="keyword">if</span>(i&lt;=r) p[i]=<span class="built_in">min</span>(z[i-l+<span class="number">1</span>],r-i+<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">while</span>(i+p[i]&lt;=n&amp;&amp;a[i+p[i]]==s[p[i]+<span class="number">1</span>]) ++p[i];</span><br><span class="line">		<span class="keyword">if</span>(i+p[i]<span class="number">-1</span>&gt;r) l=i,r=i+p[i]<span class="number">-1</span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="comment">//exkmp(a,n,s,m);</span></span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -1225,7 +1229,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">28.6k</span>
+                        class="white-color">29.5k</span>
             
             
             
