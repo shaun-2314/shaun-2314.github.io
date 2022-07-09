@@ -471,6 +471,11 @@
 <li><p>最长重复子串（可重叠）</p>
 <p>$ans=\max{height[i]}$ </p>
 </li>
+<li><p>两个字符串的最长公共子串</p>
+<p>记录每一次的公共子串的长度</p>
+<p>大致思路为下图，对角线即为重复子串。</p>
+<p><img src="/2022/04/22/template-summary/skill5.jpg" alt="img"></p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;++j)</span><br><span class="line">        len[i][j]=((a[i]==s[j])?(len[i<span class="number">-1</span>][j<span class="number">-1</span>]+<span class="number">1</span>):(<span class="number">0</span>));</span><br></pre></td></tr></tbody></table></figure></li>
 </ol>
 <h3 id="SAM使用技巧"><a href="#SAM使用技巧" class="headerlink" title="SAM使用技巧"></a>SAM使用技巧</h3><ol>
 <li><p>记录每个子串的出现次数(求 $|Right[s]|$ )</p>
@@ -1220,7 +1225,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">27.8k</span>
+                        class="white-color">28.6k</span>
             
             
             
