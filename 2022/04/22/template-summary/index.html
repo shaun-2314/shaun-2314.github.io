@@ -425,7 +425,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.3k
+                    5.4k
                 </div>
                 
 
@@ -592,6 +592,10 @@
 
 
 <h3 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LL <span class="title">fastpow</span><span class="params">(LL jj,LL kk)</span></span>{</span><br><span class="line">	LL ret=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(kk){</span><br><span class="line">		<span class="keyword">if</span>(kk&amp;<span class="number">1</span>) ret=ret*jj%mod;</span><br><span class="line">		jj=jj*jj%mod;</span><br><span class="line">		kk&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="模意义下的逆元"><a href="#模意义下的逆元" class="headerlink" title="模意义下的逆元"></a>模意义下的逆元</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//模意义下的逆元 </span></span><br><span class="line"><span class="keyword">const</span> LL mod=<span class="number">1000000007</span>;</span><br><span class="line"><span class="function">LL <span class="title">fastpow</span><span class="params">(LL jj,LL kk)</span></span>{</span><br><span class="line">	LL ret=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(kk){</span><br><span class="line">		<span class="keyword">if</span>(kk&amp;<span class="number">1</span>) ret=ret*jj%mod;</span><br><span class="line">		jj=jj*jj%mod;</span><br><span class="line">		kk&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function">LL <span class="title">rev</span><span class="params">(LL jj)</span></span>{</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">fastpow</span>(jj,mod<span class="number">-2</span>);</span><br><span class="line">}</span><br><span class="line"><span class="comment">//(1/2)%mod=rev(2)</span></span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -1244,7 +1248,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">30k</span>
+                        class="white-color">30.1k</span>
             
             
             
