@@ -4,14 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="洛谷P3294，一道思路奇妙的Trie树题目, Shaun">
-    <meta name="description" content="[SCOI2016]背单词题目传送门
-前言参考这篇博客
-题目大意输入 $n$ 个单词，要求我们给他进行重新排列，使得按以下规则花费最小
-
-
-如果存在一个单词是它的后缀，并且当前没有被填入表内，那花费 $+= n*n$ ；
-当它的所有后缀都被">
+    <meta name="keywords" content="2022牛客多校第3场, Shaun">
+    <meta name="description" content="2022牛客多校第3场contest传送门
+战况
+整体来看没有前几次的好，今天的字符串题目 $H$ 我也没有写出来。
+补题H-Hacker题意给出长度为 $n$ 的小写字符串 $A$ 和 $k$ 个长度为 $m$ 的小写字符串 $B_1 …">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>洛谷P3294，一道思路奇妙的Trie树题目 | Shaun</title>
+    <title>2022牛客多校第3场 | Shaun</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -267,12 +264,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://lc-gluttony.s3.amazonaws.com/SXOgBwqJunqG/E5cAMA8ShxoXgH68R2q4OGiiz6WnpPoz/2022nowcoder-img-cover.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">洛谷P3294，一道思路奇妙的Trie树题目</h1>
+                    <h1 class="description center-align post-title">2022牛客多校第3场</h1>
                 </div>
             </div>
         </div>
@@ -392,14 +389,6 @@
                                 <span class="chip bg-color">acm</span>
                             </a>
                         
-                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                <span class="chip bg-color">字符串</span>
-                            </a>
-                        
-                            <a href="/tags/Trie-%E6%A0%91/">
-                                <span class="chip bg-color">Trie 树</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -408,8 +397,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%8B%82%E5%88%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-category">
-                                狂刷字符串
+                            <a href="/categories/2022%E7%89%9B%E5%AE%A2%E5%A4%9A%E6%A0%A1/" class="post-category">
+                                2022牛客多校
                             </a>
                         
                     </div>
@@ -421,7 +410,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-06-28
+                    2022-07-25
                 </div>
                 
 
@@ -430,7 +419,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    971
+                    647
                 </div>
                 
 
@@ -447,39 +436,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="SCOI2016-背单词"><a href="#SCOI2016-背单词" class="headerlink" title="[SCOI2016]背单词"></a>[SCOI2016]背单词</h1><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3294">题目传送门</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>参考<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/yuzhechuan/solution-p3294">这篇博客</a></p>
-<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>输入 $n$ 个单词，要求我们给他进行重新排列，使得按以下规则花费最小</p>
-<blockquote>
-<ol>
-<li>如果存在一个单词是它的后缀，并且当前没有被填入表内，那花费 $+= n*n$ ；</li>
-<li>当它的所有后缀都被填入表内的情况下，如果在 $1 … x-1$ 的位置上的单词都不是它的后缀，那么花费 $+= x$ ；</li>
-<li>当它的所有后缀都被填入表内的情况下，如果 $1 … x-1$ 的位置上存在是它后缀的单词，所有是它后缀的单词中，序号最大为 $y$ ，那么花费 $+=x-y$ 。</li>
-</ol>
-</blockquote>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>读懂题意之后，可以将题意转化为</p>
-<blockquote>
-<p>使得每个单词的后缀都在这个单词前面，且距离尽量近。</p>
-</blockquote>
-<p>题目中需要的后缀，但是后缀不太好处理，于是我们想到把单词反转，用前缀表示后缀。以此可以建出 <em>Trie</em> 树</p>
-<p>建好 <em>Trie</em> 树之后，我们呢还需要对这棵树进行重构操作，忽略上面的非单词结尾的点，将每个单词的结尾位置进行相连，即单词之间直接相连。</p>
-<p>之后，我们还需要利用 <em>dfs</em> 再对这棵树进行重构，具体内容是将每个节点的子节点进行排序，按以子节点为根的子树的节点数从小到大的规则进行排序。</p>
-<p>然后对这样重构之后的树直接进行遍历就是最后的序列，即 <em>dfs</em> 序就是最终的序列。使用 <em>dfs</em> 即可得到答案。</p>
-<blockquote>
-<p><em>dfs</em> 序为什么正确？</p>
-<p>考虑重新建树之后，i节点的子树中的所有节点的后缀都是 $i$</p>
-<p>如果同一深度上有不止一棵子树，那么我们先在一棵上取出一个叶子节点 $j$ ，再取出一个根节点 $i$ ，我们发现如果 $j&gt;i$ 的话肯定不如 $i&lt;j$ 优秀</p>
-<p>因为调整之后i的子树上所有节点对花费的贡献 $-=$ 子树大小， $j$ 对花费的贡献 $+1$ ，所以我们可以看到 $j&gt;i$ 的花费 $&lt;=i&gt;j$ 的情况</p>
-<p>最后我们经过所有的调整可以发现序列变成了 <em>dfs</em> 序</p>
-<p>所以 <em>dfs</em> 序最优</p>
-</blockquote>
-<p>最后答案记得用 <em>long long</em> .</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; P;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXX=<span class="number">510005</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">char</span> s[MAXX];</span><br><span class="line"><span class="keyword">int</span> trie[MAXX][<span class="number">26</span>],id_cnt;</span><br><span class="line"><span class="keyword">bool</span> vis[MAXX];</span><br><span class="line"><span class="keyword">int</span> num[MAXX];</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; to[MAXX];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">int</span> now=<span class="number">0</span>,len=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;++i){</span><br><span class="line">		<span class="keyword">if</span>(trie[now][s[i]-<span class="string">'a'</span>]==<span class="number">0</span>)</span><br><span class="line">			trie[now][s[i]-<span class="string">'a'</span>]=++id_cnt;</span><br><span class="line">		now=trie[now][s[i]-<span class="string">'a'</span>];</span><br><span class="line">	}</span><br><span class="line">	vis[now]=<span class="literal">true</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rebuild</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> last)</span></span>{</span><br><span class="line">	<span class="keyword">if</span>(vis[now]){</span><br><span class="line">		to[last].<span class="built_in">emplace_back</span>(now);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;++i)</span><br><span class="line">			<span class="keyword">if</span>(trie[now][i])</span><br><span class="line">				<span class="built_in">rebuild</span>(trie[now][i],now);</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">else</span>{</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;++i)</span><br><span class="line">			<span class="keyword">if</span>(trie[now][i])</span><br><span class="line">				<span class="built_in">rebuild</span>(trie[now][i],last);</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> jj,<span class="keyword">int</span> kk)</span></span>{<span class="keyword">return</span> num[jj]&lt;num[kk];}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now)</span></span>{</span><br><span class="line">	<span class="keyword">int</span> si=to[now].<span class="built_in">size</span>();</span><br><span class="line">	num[now]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;si;++i){</span><br><span class="line">		<span class="built_in">dfs</span>(to[now][i]);</span><br><span class="line">		num[now]+=num[to[now][i]];</span><br><span class="line">	}</span><br><span class="line">	<span class="built_in">sort</span>(to[now].<span class="built_in">begin</span>(),to[now].<span class="built_in">end</span>(),cmp);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dfn[MAXX],dfn_cnt=<span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">LL <span class="title">getans</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> last)</span></span>{</span><br><span class="line">	LL ret=<span class="number">0</span>;</span><br><span class="line">	dfn[now]=++dfn_cnt;</span><br><span class="line">	<span class="keyword">if</span>(last==<span class="number">0</span>)</span><br><span class="line">		ret+=dfn[now];</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		ret+=dfn[now]-dfn[last];</span><br><span class="line">	<span class="keyword">int</span> si=to[now].<span class="built_in">size</span>();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;si;++i)</span><br><span class="line">		ret+=<span class="built_in">getans</span>(to[now][i],now);</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i){</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>);</span><br><span class="line">		<span class="built_in">reverse</span>(s+<span class="number">1</span>,s+<span class="built_in">strlen</span>(s+<span class="number">1</span>)+<span class="number">1</span>);</span><br><span class="line">		<span class="built_in">insert</span>();</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">rebuild</span>(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">dfs</span>(<span class="number">0</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,<span class="built_in">getans</span>(<span class="number">0</span>,<span class="number">0</span>));</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line"><span class="comment">//	int t;scanf("%d",&amp;t);</span></span><br><span class="line"><span class="comment">//	while(t--)</span></span><br><span class="line">		<span class="built_in">solve</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+                <h1 id="2022牛客多校第3场"><a href="#2022牛客多校第3场" class="headerlink" title="2022牛客多校第3场"></a>2022牛客多校第3场</h1><p><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/33188">contest传送门</a></p>
+<h2 id="战况"><a href="#战况" class="headerlink" title="战况"></a>战况</h2><p><img src="/2022/07/25/2022nowcoder-3/standing.png" alt="standing"></p>
+<p>整体来看没有前几次的好，今天的字符串题目 $H$ 我也没有写出来。</p>
+<h2 id="补题"><a href="#补题" class="headerlink" title="补题"></a>补题</h2><h3 id="H-Hacker"><a href="#H-Hacker" class="headerlink" title="H-Hacker"></a>H-Hacker</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>给出长度为 $n$ 的小写字符串 $A$ 和 $k$ 个长度为 $m$ 的小写字符串 $B_1 … B_k$ ， $B$ 的每个位置拥有统一的权值 $v_1 … v_m$ ，对于每个 $B_i$ 求最大和区间满足该区间构成的字符串是 $A$ 的子串（空区间合法）。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>首先用给字符串 $A$ 建立一个后缀自动机</p>
+<p>之后对于每个字符串 $B_i$ ，通过在后缀自动机上匹配的方法进行对 $B_i$ 的匹配，对于 $B_i$ 的每个位置 $j$ ，求以 $B_{ij}$ 为结尾的在 $A$ 中出现过的最长后缀的最大区间和，每一次取 $max$ 值，遍历完一个串之后就是这个串的 $ans$ 。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; P;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXX=<span class="number">500005</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">100005</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,k;</span><br><span class="line">LL a[MAXN];</span><br><span class="line"><span class="keyword">char</span> s[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SamNode</span>{</span></span><br><span class="line">	<span class="keyword">int</span> ch[<span class="number">26</span>];</span><br><span class="line">	<span class="keyword">int</span> len,fa;</span><br><span class="line">	<span class="built_in">SamNode</span>(){<span class="built_in">memset</span>(ch,<span class="number">0</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(ch));len=<span class="number">0</span>;}</span><br><span class="line">}sam[MAXX&lt;&lt;<span class="number">1</span>];</span><br><span class="line">SamNode temp[MAXX];</span><br><span class="line"><span class="keyword">int</span> las=<span class="number">1</span>,sam_cnt=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> c)</span></span>{</span><br><span class="line">	<span class="keyword">int</span> p=las;<span class="keyword">int</span> np=las=++sam_cnt;</span><br><span class="line">	sam[np].len=sam[p].len+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(;p&amp;&amp;!sam[p].ch[c];p=sam[p].fa) sam[p].ch[c]=np;</span><br><span class="line">	<span class="keyword">if</span>(!p) sam[np].fa=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span>{</span><br><span class="line">		<span class="keyword">int</span> q=sam[p].ch[c];</span><br><span class="line">		<span class="keyword">if</span>(sam[q].len==sam[p].len+<span class="number">1</span>) sam[np].fa=q;</span><br><span class="line">		<span class="keyword">else</span>{</span><br><span class="line">			<span class="keyword">int</span> nq=++sam_cnt;sam[nq]=sam[q];</span><br><span class="line">			sam[nq].len=sam[p].len+<span class="number">1</span>;</span><br><span class="line">			sam[q].fa=sam[np].fa=nq;</span><br><span class="line">			<span class="keyword">for</span>(;p&amp;&amp;sam[p].ch[c]==q;p=sam[p].fa) sam[p].ch[c]=nq;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;k);</span><br><span class="line">	<span class="built_in">getchar</span>();<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;a[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> len=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;++i)</span><br><span class="line">		<span class="built_in">add</span>(s[i]-<span class="string">'a'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;++i){</span><br><span class="line">		<span class="built_in">getchar</span>();<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>);</span><br><span class="line">		len=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">		LL ans=<span class="number">0LL</span>,anss=<span class="number">0LL</span>;</span><br><span class="line">		<span class="keyword">int</span> now=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=len;++j){</span><br><span class="line">			<span class="keyword">if</span>(anss&gt;<span class="number">0</span>&amp;&amp;sam[now].ch[s[j]-<span class="string">'a'</span>]){</span><br><span class="line">				anss+=a[j];</span><br><span class="line">				now=sam[now].ch[s[j]-<span class="string">'a'</span>];</span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(sam[<span class="number">1</span>].ch[s[j]-<span class="string">'a'</span>]){</span><br><span class="line">				anss=a[j];</span><br><span class="line">				now=sam[<span class="number">1</span>].ch[s[j]-<span class="string">'a'</span>];</span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">else</span>{</span><br><span class="line">				anss=<span class="number">0LL</span>;</span><br><span class="line">				now=<span class="number">1</span>;</span><br><span class="line">			}</span><br><span class="line">			ans=<span class="built_in">max</span>(ans,anss);</span><br><span class="line">		}</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line"><span class="comment">//	LL t;scanf("%lld",&amp;t);</span></span><br><span class="line"><span class="comment">//	while(t--)</span></span><br><span class="line">		<span class="built_in">solve</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道题里面的思维非常的妙，使用前缀来表示后缀，以此可以直接使用 <em>Trie</em> 树。</p>
-<p>还有对 <em>Trie</em> 树进行重构，都非常的巧妙。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>在 $SAM$ 中<strong>不一定</strong>非要把每个字符串都加到 $SAM$ 中才能进行子串匹配</p>
+<p>在这道题中就是只对原串 $A$ 建立了 $SAM$ ，然后对于每一个新串，通过 $trie树$ 的匹配方式进行匹配即可。</p>
 
                 
             </div>
@@ -506,7 +474,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://shaun-2314.github.io/2022/06/28/luogu-p3294/">http://shaun-2314.github.io/2022/06/28/luogu-p3294/</a>
+                    <a href="http://shaun-2314.github.io/2022/07/25/2022nowcoder-3/">http://shaun-2314.github.io/2022/07/25/2022nowcoder-3/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -546,14 +514,6 @@
                             
                                 <a href="/tags/acm/">
                                     <span class="chip bg-color">acm</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                    <span class="chip bg-color">字符串</span>
-                                </a>
-                            
-                                <a href="/tags/Trie-%E6%A0%91/">
-                                    <span class="chip bg-color">Trie 树</span>
                                 </a>
                             
                         </div>
@@ -812,17 +772,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/06/30/luogu-p5357/">
+                <a href="/2022/07/25/2022nowcoder-3/">
                     <div class="card-image">
                         
+                        <img src="https://lc-gluttony.s3.amazonaws.com/SXOgBwqJunqG/E5cAMA8ShxoXgH68R2q4OGiiz6WnpPoz/2022nowcoder-img-cover.png" class="responsive-img" alt="2022牛客多校第3场">
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="洛谷P5357，关于AC自动机的优化方案">
-                        
-                        <span class="card-title">洛谷P5357，关于AC自动机的优化方案</span>
+                        <span class="card-title">2022牛客多校第3场</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -832,34 +792,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%8B%82%E5%88%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-category">
-                                    狂刷字符串
+                            <a href="/categories/2022%E7%89%9B%E5%AE%A2%E5%A4%9A%E6%A0%A1/" class="post-category">
+                                    2022牛客多校
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/acm/">
                         <span class="chip bg-color">acm</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="chip bg-color">字符串</span>
-                    </a>
-                    
-                    <a href="/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/">
-                        <span class="chip bg-color">AC自动机</span>
                     </a>
                     
                 </div>
@@ -873,13 +826,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/06/27/nowcoder-16638/">
+                <a href="/2022/07/09/cfeduround-131-div-2-summary/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="牛客16638，一道比较经典的KMP题目">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="cfEduRound-131-Div-2-Summary">
                         
-                        <span class="card-title">牛客16638，一道比较经典的KMP题目</span>
+                        <span class="card-title">cfEduRound-131-Div-2-Summary</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -890,14 +843,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%8B%82%E5%88%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-category">
-                                    狂刷字符串
+                            <a href="/categories/cf%E6%80%BB%E7%BB%93/" class="post-category">
+                                    cf总结
                                 </a>
                             
                             
@@ -911,12 +864,8 @@
                         <span class="chip bg-color">acm</span>
                     </a>
                     
-                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="chip bg-color">字符串</span>
-                    </a>
-                    
-                    <a href="/tags/KMP/">
-                        <span class="chip bg-color">KMP</span>
+                    <a href="/tags/cf/">
+                        <span class="chip bg-color">cf</span>
                     </a>
                     
                 </div>
