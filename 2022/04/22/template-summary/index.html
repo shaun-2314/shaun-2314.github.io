@@ -425,7 +425,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.7k
+                    5.8k
                 </div>
                 
 
@@ -600,6 +600,10 @@
 
 
 <h3 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LL <span class="title">fastpow</span><span class="params">(LL jj,LL kk)</span></span>{</span><br><span class="line">	LL ret=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(kk){</span><br><span class="line">		<span class="keyword">if</span>(kk&amp;<span class="number">1</span>) ret=ret*jj%mod;</span><br><span class="line">		jj=jj*jj%mod;</span><br><span class="line">		kk&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="线性基-解决最大最小异或和问题"><a href="#线性基-解决最大最小异或和问题" class="headerlink" title="线性基(解决最大最小异或和问题)"></a>线性基(解决最大最小异或和问题)</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">LL d[<span class="number">70</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">62</span>;++i)</span><br><span class="line">        d[i]=<span class="number">0LL</span>;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(LL jj)</span></span>{</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">62</span>;i&gt;=<span class="number">0</span>;--i){</span><br><span class="line">        <span class="keyword">if</span>(jj&amp;(<span class="number">1LL</span>&lt;&lt;i)){</span><br><span class="line">            <span class="keyword">if</span>(!d[i]){</span><br><span class="line">                d[i]=jj;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">            jj^=d[i];</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">inline</span> LL <span class="title">getmax</span><span class="params">()</span></span>{</span><br><span class="line">    LL ret=<span class="number">0LL</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">62</span>;i&gt;=<span class="number">0</span>;--i)</span><br><span class="line">        ret=<span class="built_in">max</span>(ret,ret^d[i]);</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">inline</span> LL <span class="title">geimin</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">62</span>;++i)</span><br><span class="line">        <span class="keyword">if</span>(d[i])</span><br><span class="line">            <span class="keyword">return</span> d[i];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -1260,7 +1264,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33.2k</span>
+                        class="white-color">34.6k</span>
             
             
             
