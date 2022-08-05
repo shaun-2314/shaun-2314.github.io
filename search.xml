@@ -37,7 +37,7 @@
       <link href="/2022/08/05/2022hdu-5/"/>
       <url>/2022/08/05/2022hdu-5/</url>
       
-        <content type="html"><![CDATA[<h1 id="2022杭电多校第5场"><a href="#2022杭电多校第5场" class="headerlink" title="2022杭电多校第5场"></a>2022杭电多校第5场</h1><p><a href="http://acm.hdu.edu.cn/contest/problems?cid=1048">contest传送门</a></p><h2 id="战况"><a href="#战况" class="headerlink" title="战况"></a>战况</h2><p><img src="/2022/08/05/2022hdu-5/standing.png" alt="standing"></p><p>这次总体来看没有之前那么猛</p><p>这次我也算是写了0.5道，我和姚老师讨论出了10的结论。</p><p>这次有字符串题目，但是通过率都非常低，当时的08连题都没看。</p><h2 id="补题"><a href="#补题" class="headerlink" title="补题"></a>补题</h2><h3 id="08-AC-DC"><a href="#08-AC-DC" class="headerlink" title="08-AC/DC"></a>08-AC/DC</h3><p>我感觉这是一道非常好的字符串题目，练习 $SAM$  的使用技巧的非常好的题。于是单独写了一篇。</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="2022杭电多校第5场"><a href="#2022杭电多校第5场" class="headerlink" title="2022杭电多校第5场"></a>2022杭电多校第5场</h1><p><a href="http://acm.hdu.edu.cn/contest/problems?cid=1048">contest传送门</a></p><h2 id="战况"><a href="#战况" class="headerlink" title="战况"></a>战况</h2><p><img src="/2022/08/05/2022hdu-5/standing.png" alt="standing"></p><p>这次总体来看没有之前那么猛</p><p>这次我也算是写了0.5道，我和姚老师讨论出了10的结论。</p><p>这次有字符串题目，但是通过率都非常低，当时的08连题都没看。</p><h2 id="补题"><a href="#补题" class="headerlink" title="补题"></a>补题</h2><h3 id="08-AC-DC"><a href="#08-AC-DC" class="headerlink" title="08-AC/DC"></a>08-AC/DC</h3><p>我感觉这是一道非常好的字符串题目，练习 $SAM$  的使用技巧的非常好的题。于是单独写了一篇。</p><p><a href="https://shaun-2314.github.io/2022/08/05/hdu-7192/">在这里</a></p>]]></content>
       
       
       <categories>
