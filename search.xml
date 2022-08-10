@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>2022杭电多校第7场</title>
+      <link href="/2022/08/10/2022hdu-7/"/>
+      <url>/2022/08/10/2022hdu-7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="2022杭电多校第7场"><a href="#2022杭电多校第7场" class="headerlink" title="2022杭电多校第7场"></a>2022杭电多校第7场</h1><p><a href="http://acm.hdu.edu.cn/contest/problems?cid=1050">contest传送门</a></p><h2 id="战况"><a href="#战况" class="headerlink" title="战况"></a>战况</h2><p><img src="/2022/08/10/2022hdu-7/standing.png" alt="standing"></p><p>这次贼猛，前几题写的也贼快，甚至在前面的时候甚至排到了第3名。</p><p>这次我也写了一道题，和曹佬一块讨论出了1002。</p><p>这次没有找到字符串题目。</p><h2 id="补题"><a href="#补题" class="headerlink" title="补题"></a>补题</h2><h3 id="1006-Sumire-数位dp"><a href="#1006-Sumire-数位dp" class="headerlink" title="1006-Sumire (数位dp)"></a>1006-Sumire (数位dp)</h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>计算 $\sum_{i=l}^r f^k(i,B,d)$</p><p>其中 $f(x,B,d)$ 表示数字 $d$ 在 $B$ 进制的数字 $x$ 中出现的次数。</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>数位dp，等我再学学再接着写。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2022杭电多校 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> acm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hdu7192,巧用sam</title>
       <link href="/2022/08/05/hdu-7192/"/>
       <url>/2022/08/05/hdu-7192/</url>
