@@ -4,11 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="洛谷P5357，关于AC自动机的优化方案, Shaun">
-    <meta name="description" content="【模板】AC 自动机（二次加强版）题目传送门
-题目大意给你一个文本串 $S$ 和 $n$ 个模式串 $T_{1 \sim n}$ ，请你分别求出每个模式串 $T_i$ 在 $S$ 中出现的次数。
-当时写题过程
-当时看到题目后，看着和前面一个">
+    <meta name="keywords" content="洛谷P6292，个人认为的字符串神仙题目, Shaun">
+    <meta name="description" content="区间本质不同子串个数题目传送门
+前言借鉴了题解中的这篇。
+起因
+前面多校训练的时候，出了一道和这道题十分类似但是又差别很大的题目。于是想着先把这道题给学会了，然后再尝试写多校训练中出现的那道题目。
+本题知识点一览
+$SAM$ + $LCT$">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>洛谷P5357，关于AC自动机的优化方案 | Shaun</title>
+    <title>洛谷P6292，个人认为的字符串神仙题目 | Shaun</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -264,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">洛谷P5357，关于AC自动机的优化方案</h1>
+                    <h1 class="description center-align post-title">洛谷P6292，个人认为的字符串神仙题目</h1>
                 </div>
             </div>
         </div>
@@ -389,12 +391,28 @@
                                 <span class="chip bg-color">acm</span>
                             </a>
                         
+                            <a href="/tags/LCT/">
+                                <span class="chip bg-color">LCT</span>
+                            </a>
+                        
                             <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
                                 <span class="chip bg-color">字符串</span>
                             </a>
                         
-                            <a href="/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/">
-                                <span class="chip bg-color">AC自动机</span>
+                            <a href="/tags/%E5%90%8E%E7%BC%80%E8%87%AA%E5%8A%A8%E6%9C%BA/">
+                                <span class="chip bg-color">后缀自动机</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+                                <span class="chip bg-color">线段树</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%89%AB%E6%8F%8F%E7%BA%BF/">
+                                <span class="chip bg-color">扫描线</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%A6%BB%E7%BA%BF/">
+                                <span class="chip bg-color">离线</span>
                             </a>
                         
                     </div>
@@ -418,7 +436,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-06-30
+                    2022-08-26
                 </div>
                 
 
@@ -427,7 +445,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    2.1k
                 </div>
                 
 
@@ -444,20 +462,34 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="【模板】AC-自动机（二次加强版）"><a href="#【模板】AC-自动机（二次加强版）" class="headerlink" title="【模板】AC 自动机（二次加强版）"></a>【模板】AC 自动机（二次加强版）</h1><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5357">题目传送门</a></p>
-<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>给你一个文本串 $S$ 和 $n$ 个模式串 $T_{1 \sim n}$ ，请你分别求出每个模式串 $T_i$ 在 $S$ 中出现的次数。</p>
-<h2 id="当时写题过程"><a href="#当时写题过程" class="headerlink" title="当时写题过程"></a>当时写题过程</h2><p><img src="/2022/06/30/luogu-p5357/MySubmission.png" alt="MySubmissions"></p>
-<p>当时看到题目后，看着和前面一个模板题一模一样，于是，就直接把前面一个的代码 <em>copy</em> 了过来，交了一发，出现了第一幕，40分，里面不是 <em>WA</em> 就是 <em>TLE</em> ，我想不通为什么会有 <em>WA</em> ，于是，我又重新读了一遍题，发现这道题里面 <strong>数据不保证任意两个模式串不相同</strong> 。</p>
-<p>我想先保证算法的正确性，然后再进行优化操作，于是，把这里改了一下之后，就又交了一发，果然，这一发里面就只有 <em>TLE</em> 了，那么问题来了，该怎么优化呢。</p>
-<p>当时想到了在匹配的过程中不进行答案的汇总，而是只进行汇总 <em>Trie</em> 树里面的每个节点到过的次数，等匹配结束之后再总的进行答案的汇总。果然，这次 <em>TLE</em> 的测试点数就少了好多，但是仍然无法AC。</p>
-<p>之后，我又想到了在 <em>bfs()</em> 中把每个 <em>Trie</em> 树的节点所对应的单词汇总，这样就不需要每次都往根部递归求值了，结果，测试点中终于没有 <em>TLE</em> 了，但是，又出现了三个 <em>MLE</em> ，每个 <em>Trie</em> 树节点存的单词数量太大了，这个方法也行不通。</p>
-<p>最后，我就想，有没有一种可能，我可以记录他在 <em>bfs()</em> 的过程中的 <em>bfs</em> 序，然后，在匹配的过程中只记录每个节点到过的次数，最后，在匹配结束之后，利用 <em>bfs</em> 序的逆序进行遍历，每遍历一个点，就把这个点往根部递归的第一个点的访问次数加上这个点的访问次数，以此递推，即可得出答案数组。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>首先，在匹配的过程中，我们只需要记录每个点的访问次数，这里用 $nnum$ 数据进行记录。在匹配结束之后，为了防止递归式的求解(因为这样会一直重复访问一些(数据量非常大)节点)，我们需要遍历一遍就能求解出答案的方法。于是，我们需要一个特殊的遍历序列，这个序列需要满足后遍历的节点在递归的思路里面不会到达先遍历的节点，而且先遍历的节点需要能够把他的访问次数传递到他在递归的思路中到达的后遍历的节点。刚好，我们在 <em>bfs()</em> 的过程的序列刚好就是这个序列的逆序列。于是，我们记录下来在 <em>bfs()</em> 过程中的访问顺序，在最后求解答案的时候再逆序访问即可。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unordered_set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> IOS ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 0x3f3f3f3f</span></span><br><span class="line"><span class="comment">//#define int long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; P;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;P,<span class="keyword">int</span>&gt; PP;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXX=<span class="number">2000005</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">0.0000001</span>;</span><br><span class="line"><span class="keyword">const</span> LL mod=<span class="number">998244353</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> id_max=MAXX;</span><br><span class="line"><span class="keyword">int</span> n,flag[id_max],fail[id_max];</span><br><span class="line"><span class="keyword">int</span> trie[id_max][<span class="number">26</span>],id_cnt;</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; id[id_max];</span><br><span class="line"><span class="keyword">char</span> s[MAXX];</span><br><span class="line"><span class="keyword">int</span> num[MAXX];</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化，用于多组数据输入 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>{</span><br><span class="line">	id_cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;id_max;++i){</span><br><span class="line">		flag[i]=fail[i]=<span class="number">0</span>;</span><br><span class="line">		id[i].<span class="built_in">clear</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">26</span>;++j)</span><br><span class="line">			trie[i][j]=<span class="number">0</span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//向插入字典树中插入一个单词 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">char</span> s[])</span></span>{</span><br><span class="line">	<span class="keyword">int</span> len=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> now=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;++i){</span><br><span class="line">		<span class="keyword">if</span>(trie[now][s[i]-<span class="string">'a'</span>]==<span class="number">0</span>)</span><br><span class="line">			trie[now][s[i]-<span class="string">'a'</span>]=++id_cnt;</span><br><span class="line">		now=trie[now][s[i]-<span class="string">'a'</span>];</span><br><span class="line">	}</span><br><span class="line">	++flag[now];</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//向插入字典树中插入一个单词，并与输入顺序进行链接 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">char</span> s[],<span class="keyword">int</span> idd)</span></span>{</span><br><span class="line">	<span class="keyword">int</span> len=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> now=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;++i){</span><br><span class="line">		<span class="keyword">if</span>(trie[now][s[i]-<span class="string">'a'</span>]==<span class="number">0</span>)</span><br><span class="line">			trie[now][s[i]-<span class="string">'a'</span>]=++id_cnt;</span><br><span class="line">		now=trie[now][s[i]-<span class="string">'a'</span>];</span><br><span class="line">	}</span><br><span class="line">	id[now].<span class="built_in">emplace_back</span>(idd);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> bfsn[id_max];</span><br><span class="line"><span class="comment">//链接fail指针 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">()</span></span>{</span><br><span class="line">	queue&lt;<span class="keyword">int</span>&gt; qq;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;++i)</span><br><span class="line">		<span class="keyword">if</span>(trie[<span class="number">0</span>][i])</span><br><span class="line">			qq.<span class="built_in">emplace</span>(trie[<span class="number">0</span>][i]);</span><br><span class="line">	<span class="keyword">int</span> bfs_cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(!qq.<span class="built_in">empty</span>()){</span><br><span class="line">		<span class="keyword">int</span> now=qq.<span class="built_in">front</span>();qq.<span class="built_in">pop</span>();</span><br><span class="line">		bfsn[++bfs_cnt]=now;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;++i){</span><br><span class="line">			<span class="keyword">if</span>(trie[now][i]){</span><br><span class="line">				fail[trie[now][i]]=trie[fail[now]][i];</span><br><span class="line">				qq.<span class="built_in">emplace</span>(trie[now][i]);</span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				trie[now][i]=trie[fail[now]][i];</span><br><span class="line">		}</span><br><span class="line"><span class="comment">//		int fa=fail[now];</span></span><br><span class="line"><span class="comment">//		id[now].insert(id[now].end(),id[fa].begin(),id[fa].end());</span></span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回字典中有多少个单词在s串中出现过 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getone</span><span class="params">(<span class="keyword">char</span> s[])</span></span>{</span><br><span class="line">	<span class="keyword">int</span> now=<span class="number">0</span>,len=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> ret=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;++i){</span><br><span class="line">		now=trie[now][s[i]-<span class="string">'a'</span>];</span><br><span class="line">		<span class="keyword">int</span> jj=now;</span><br><span class="line">		<span class="keyword">while</span>(jj&gt;<span class="number">0</span>&amp;&amp;flag[jj]!=<span class="number">-1</span>){</span><br><span class="line">			ret+=flag[jj];</span><br><span class="line">			flag[jj]=<span class="number">-1</span>;</span><br><span class="line">			jj=fail[jj];</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">int</span> nnum[id_max];</span><br><span class="line"><span class="comment">//需事先定义num数组，用于保存每个单词在s串中出现过几次 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getnum</span><span class="params">(<span class="keyword">char</span> s[])</span></span>{</span><br><span class="line">	<span class="built_in">memset</span>(num,<span class="number">0</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(num));</span><br><span class="line">	<span class="keyword">int</span> now=<span class="number">0</span>,len=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;++i){</span><br><span class="line">		now=trie[now][s[i]-<span class="string">'a'</span>];</span><br><span class="line">		++nnum[now];</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">solve_it</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i){</span><br><span class="line">		<span class="built_in">getchar</span>();</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>);</span><br><span class="line">		<span class="built_in">ins</span>(s,i);</span><br><span class="line">	}</span><br><span class="line">	<span class="built_in">bfs</span>();</span><br><span class="line">	<span class="built_in">getchar</span>();<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">getnum</span>(s);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=id_cnt;i&gt;<span class="number">0</span>;--i){</span><br><span class="line">		<span class="keyword">int</span> now=bfsn[i];</span><br><span class="line">		nnum[fail[now]]+=nnum[now];</span><br><span class="line">			<span class="keyword">int</span> si=id[now].<span class="built_in">size</span>();</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;si;++j)</span><br><span class="line">				num[id[now][j]]+=nnum[now];</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i){</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,num[i]);</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line"><span class="comment">//	printf("%d\n",getone(s));</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line"><span class="comment">//	LL T;scanf("%lld",&amp;T);</span></span><br><span class="line"><span class="comment">//	while(T--)</span></span><br><span class="line">		<span class="built_in">solve_it</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+                <h1 id="区间本质不同子串个数"><a href="#区间本质不同子串个数" class="headerlink" title="区间本质不同子串个数"></a>区间本质不同子串个数</h1><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6292">题目传送门</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>借鉴了题解中的<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/Hakurei-Reimu/solution-p6292">这篇</a>。</p>
+<p><strong>起因</strong></p>
+<p>前面多校训练的时候，出了一道和这道题十分类似但是又差别很大的<a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/38727/C">题目</a>。于是想着先把这道题给学会了，然后再尝试写多校训练中出现的那道题目。</p>
+<p><strong>本题知识点一览</strong></p>
+<p>$SAM$ + $LCT$ + 线段树 + 扫描线思想 + 离线处理</p>
+<p><strong>乱七八糟的</strong></p>
+<p>因为当时我还并不会 $LCT$ ，于是才有了昨天的那篇学习 $LCT$ 的文章。然后，为了学 $LCT$ ，又需要学会 $splay$  和 <strong>树剖</strong> ，于是又有了上上篇的学习树剖， $splay$ 实在是不想再学了，太累了，就直接跳过 $splay$ 去学 $LCT$ 了，然后对于 $LCT$ 的理解，除了 $splay$ 部分，感觉还是可以的(然而只有学会 $splay$ 才能完全理解 $LCT$ )。</p>
+<p>当时写着写着才发现我甚至还没有一个像样的线段树板子，于是当时就去 <em>copy</em> 了一份，到后面了再总结一下这个板子。</p>
+<p><strong>步入正文</strong></p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给出一个长度为 $n(1 \leq n \leq 10^5)$ 的字符串 $S$ ，$m(1 \leq m \leq 2 \times 10^5)$ 次询问由 $S$ 的第 $L$ 到第 $R$ 个字符组成的字符串包含多少个本质不同的子串。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>我们首先考虑<strong>静态区间不同元素种类数</strong>这种经典问题的求解方法。</p>
+<blockquote>
+<p>首先把所有询问离线下来，根据右端点排序。</p>
+<p>对于一个固定的右端点 $i$ ，贪心的只考虑 $i$ 之前每种元素最后出现的位置。按下标从左到右扫描线，用线段树维护每个位置是否在前缀 $i$ 种最后一次出现。加入第 $i$ 个元素时，在线段树中把当前位置 $+1$ ，把上一个相同元素的位置 $-1$ 。答案就直接区间查询即可。</p>
+</blockquote>
+<p>我们发现这道题是可以采用这个思路的。</p>
+<p>我们把每种本质不同的子串都当作是一种元素。</p>
+<p>线段树中维护区间和，每个位置 $i$ 表示那些<strong>此时</strong>以 $i$ 位置为开头并且是<strong>最后一次出现</strong>的子串的数量。</p>
+<p>那么，在插入 $i$ 位置时，我们应当把所有以 $i$ 为结尾的子串的贡献加入到线段树中，再把重复出现的子串的上次出现位置的贡献给删掉，子串有长度，我们只需要维护左端点即可(即上一段说的定义)。把贡献加入到线段树我们可以直接使用一次区间加就可以完成，但是把上次的贡献给删掉就不好搞了，因为我们并不知道他们上次出现的位置。</p>
+<p>于是，我们建一个后缀自动机，那么以 $i$ 位置结尾的子串就是前缀 $i$ 对应的节点在后缀链接树上的所有 $father$ 节点。根据 $SAM$ 的特点，每个节点会表示同一个状态的多个子串，而他们的<strong>上一次出现的位置</strong>的右端点是完全一样的，而且他们的左端点是一个连续的片段。</p>
+<p>考虑暴力求解，对每一个节点设置一个染色，我们可以暴力向上跳后缀链接树并在线段树上进行区间修改，同时，我们还需要把这条链染成 $i$ 颜色，表示最后一次出现的位置的右端点是 $i$ 。但是显然这种复杂度是无法接受的。</p>
+<p>通过观察，我们发现我们操作的好像都是 $SAM$ 上的链，于是我们考虑 $LCT$ 进行优化，我们发现“暴力向上跳后缀链接树并在线段树上进行区间修改”正好对应着 $LCT$ 上的 $access$ 操作，我们可以利用 $access$ 操作中的<strong>断链</strong>、<strong>连接链</strong>来直接进行线段树上的区间加操作和整条链染色的操作，这样做的复杂度是十分友好的。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 0x3f3f3f3f3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; P;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXX=<span class="number">100005</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,pos[MAXX];</span><br><span class="line"><span class="keyword">char</span> s[MAXX];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SamNode</span>{</span></span><br><span class="line">	<span class="keyword">int</span> ch[<span class="number">26</span>];</span><br><span class="line">	<span class="keyword">int</span> len,fa;</span><br><span class="line">	<span class="built_in">SamNode</span>(){<span class="built_in">memset</span>(ch,<span class="number">0</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(ch));len=<span class="number">0</span>;}</span><br><span class="line">}sam[MAXX&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> las=<span class="number">1</span>,sam_cnt=<span class="number">1</span>;</span><br><span class="line"><span class="comment">//LL num[MAXX&lt;&lt;1];</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> c)</span></span>{</span><br><span class="line">	<span class="keyword">int</span> p=las;<span class="keyword">int</span> np=las=++sam_cnt;</span><br><span class="line"><span class="comment">//	num[np]=1LL;//此行为计数用，标记出现过几次 </span></span><br><span class="line">	sam[np].len=sam[p].len+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(;p&amp;&amp;!sam[p].ch[c];p=sam[p].fa) sam[p].ch[c]=np;</span><br><span class="line">	<span class="keyword">if</span>(!p) sam[np].fa=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span>{</span><br><span class="line">		<span class="keyword">int</span> q=sam[p].ch[c];</span><br><span class="line">		<span class="keyword">if</span>(sam[q].len==sam[p].len+<span class="number">1</span>) sam[np].fa=q;</span><br><span class="line">		<span class="keyword">else</span>{</span><br><span class="line">			<span class="keyword">int</span> nq=++sam_cnt;sam[nq]=sam[q];</span><br><span class="line">			sam[nq].len=sam[p].len+<span class="number">1</span>;</span><br><span class="line">			sam[q].fa=sam[np].fa=nq;</span><br><span class="line">			<span class="keyword">for</span>(;p&amp;&amp;sam[p].ch[c]==q;p=sam[p].fa) sam[p].ch[c]=nq;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Seg</span>{</span></span><br><span class="line">	LL val[MAXX&lt;&lt;<span class="number">2</span>],tag[MAXX&lt;&lt;<span class="number">2</span>];</span><br><span class="line">	<span class="built_in">Seg</span>(){<span class="built_in">memset</span>(val,<span class="number">0</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(val));<span class="built_in">memset</span>(tag,<span class="number">0</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(tag));}</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">push_down</span><span class="params">(<span class="keyword">int</span> rt,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>{</span><br><span class="line">		<span class="keyword">if</span>(tag[rt]){</span><br><span class="line">			<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">			tag[rt&lt;&lt;<span class="number">1</span>]+=tag[rt],tag[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]+=tag[rt];</span><br><span class="line">			val[rt&lt;&lt;<span class="number">1</span>]+=tag[rt]*(mid-l+<span class="number">1</span>);val[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]+=tag[rt]*(r-(mid+<span class="number">1</span>)+<span class="number">1</span>);</span><br><span class="line">			tag[rt]=<span class="number">0</span>;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">push_up</span><span class="params">(<span class="keyword">int</span> rt)</span></span>{</span><br><span class="line">		val[rt]=val[rt&lt;&lt;<span class="number">1</span>]+val[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>];</span><br><span class="line">	}</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> rt,<span class="keyword">int</span> tl,<span class="keyword">int</span> tr,LL w)</span></span>{</span><br><span class="line">        <span class="keyword">if</span>(tl&gt;tr) <span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span>(tl&lt;=l&amp;&amp;r&lt;=tr){</span><br><span class="line">			tag[rt]+=w;val[rt]+=w*(r-l+<span class="number">1</span>);<span class="keyword">return</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="built_in">push_down</span>(rt,l,r);</span><br><span class="line">		<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(tl&lt;=mid)<span class="built_in">add</span>(l,mid,rt&lt;&lt;<span class="number">1</span>,tl,tr,w);</span><br><span class="line">		<span class="keyword">if</span>(tr&gt;=mid+<span class="number">1</span>)<span class="built_in">add</span>(mid+<span class="number">1</span>,r,rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,tl,tr,w);</span><br><span class="line">		<span class="built_in">push_up</span>(rt);</span><br><span class="line">	}</span><br><span class="line">	<span class="function">LL <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> rt,<span class="keyword">int</span> tl,<span class="keyword">int</span> tr)</span></span>{</span><br><span class="line">		<span class="keyword">if</span>(tl&lt;=l&amp;&amp;r&lt;=tr){<span class="keyword">return</span> val[rt];}</span><br><span class="line">		<span class="built_in">push_down</span>(rt,l,r);</span><br><span class="line">		<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;LL ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(tl&lt;=mid)ans+=<span class="built_in">getsum</span>(l,mid,rt&lt;&lt;<span class="number">1</span>,tl,tr);</span><br><span class="line">		<span class="keyword">if</span>(tr&gt;=mid+<span class="number">1</span>)ans+=<span class="built_in">getsum</span>(mid+<span class="number">1</span>,r,rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,tl,tr);</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	}</span><br><span class="line">}seg;</span><br><span class="line"><span class="comment">//add(1,n,1,l,r,v);</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LCT</span>{</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span>{</span></span><br><span class="line">        <span class="keyword">int</span> fa,left,right,val,cov;</span><br><span class="line">    }s[MAXX&lt;&lt;<span class="number">1</span>];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> i)</span></span>{</span><br><span class="line">        <span class="keyword">if</span>(s[i].cov){</span><br><span class="line">            <span class="keyword">if</span>(s[i].left) s[s[i].left].val=s[s[i].left].cov=s[i].cov;</span><br><span class="line">            <span class="keyword">if</span>(s[i].right) s[s[i].right].val=s[s[i].right].cov=s[i].cov;</span><br><span class="line">            s[i].cov=<span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">identify</span><span class="params">(<span class="keyword">int</span> i)</span></span>{</span><br><span class="line">        <span class="keyword">if</span>(s[s[i].fa].left==i) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(s[s[i].fa].right==i) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> f,<span class="keyword">int</span> op)</span></span>{</span><br><span class="line">        s[i].fa=f;</span><br><span class="line">        <span class="keyword">if</span>(op==<span class="number">1</span>) s[f].right=i;</span><br><span class="line">        <span class="keyword">if</span>(op==<span class="number">0</span>) s[f].left=i;</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span></span>{</span><br><span class="line">        <span class="keyword">int</span> y=s[x].fa;</span><br><span class="line">        <span class="keyword">int</span> z=s[y].fa;</span><br><span class="line">        <span class="keyword">int</span> opy=<span class="built_in">identify</span>(y);</span><br><span class="line">        <span class="keyword">int</span> opx=<span class="built_in">identify</span>(x);</span><br><span class="line">        <span class="keyword">int</span> u=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(opx==<span class="number">1</span>) u=s[x].left;</span><br><span class="line">        <span class="keyword">if</span>(opx==<span class="number">0</span>) u=s[x].right;</span><br><span class="line">        <span class="built_in">connect</span>(u,y,opx);</span><br><span class="line">        <span class="built_in">connect</span>(y,x,opx^<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">connect</span>(x,z,opy);</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pushall</span><span class="params">(<span class="keyword">int</span> x)</span></span>{</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">identify</span>(x)!=<span class="number">-1</span>) <span class="built_in">pushall</span>(s[x].fa);</span><br><span class="line">        <span class="built_in">pushdown</span>(x);</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> i)</span></span>{</span><br><span class="line">        <span class="built_in">pushall</span>(i);</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">identify</span>(i)!=<span class="number">-1</span>){</span><br><span class="line">            <span class="keyword">int</span> up=s[i].fa;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">identify</span>(up)==<span class="number">-1</span>) <span class="built_in">rotate</span>(i);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">identify</span>(i)==<span class="built_in">identify</span>(up)) <span class="built_in">rotate</span>(up),<span class="built_in">rotate</span>(i);</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">rotate</span>(i),<span class="built_in">rotate</span>(i);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">access</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> id)</span></span>{</span><br><span class="line">        <span class="keyword">int</span> temp=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(k){</span><br><span class="line">            <span class="built_in">splay</span>(k);</span><br><span class="line">            <span class="keyword">if</span>(s[k].val){</span><br><span class="line">                <span class="comment">// printf("*%d %d %d\n",s[k].val-sam[k].len+1,s[k].val-sam[s[k].fa].len,-1);//</span></span><br><span class="line">                seg.<span class="built_in">add</span>(<span class="number">1</span>,n,<span class="number">1</span>,s[k].val-sam[k].len+<span class="number">1</span>,s[k].val-sam[s[k].fa].len,<span class="number">-1</span>);</span><br><span class="line">            }</span><br><span class="line">            s[k].right=temp;</span><br><span class="line">            temp=k;</span><br><span class="line">            k=s[k].fa;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// printf("*1 %d 1\n",id);//</span></span><br><span class="line">        seg.<span class="built_in">add</span>(<span class="number">1</span>,n,<span class="number">1</span>,<span class="number">1</span>,id,<span class="number">1</span>);</span><br><span class="line">        s[temp].val=s[temp].cov=id;</span><br><span class="line">        <span class="keyword">return</span> temp;</span><br><span class="line">    }</span><br><span class="line">}lct;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">QQ</span>{</span></span><br><span class="line">    <span class="keyword">int</span> l,r,id;</span><br><span class="line">}a[MAXX*<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(QQ jj,QQ kk)</span></span>{<span class="keyword">return</span> (jj.r&lt;kk.r);}</span><br><span class="line">LL ans[MAXX*<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s\n%d"</span>,s+<span class="number">1</span>,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a[i].l,&amp;a[i].r);</span><br><span class="line">        a[i].id=i;</span><br><span class="line">    }</span><br><span class="line">    n=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+m+<span class="number">1</span>,cmp);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i){</span><br><span class="line">        <span class="built_in">add</span>(s[i]-<span class="string">'a'</span>);</span><br><span class="line">        pos[i]=las;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=sam_cnt;++i){</span><br><span class="line">        lct.s[i].fa=sam[i].fa;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> p=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i){</span><br><span class="line">        lct.<span class="built_in">access</span>(pos[i],i);</span><br><span class="line">        <span class="keyword">while</span>(a[p].r==i)</span><br><span class="line">            ans[a[p].id]=seg.<span class="built_in">getsum</span>(<span class="number">1</span>,n,<span class="number">1</span>,a[p].l,a[p].r),++p;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans[i]);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line"><span class="comment">//	LL t;scanf("%lld",&amp;t);</span></span><br><span class="line"><span class="comment">//	while(t--)</span></span><br><span class="line">		<span class="built_in">solve</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道题的变数感觉好多，当时写完这道题之后我去翻了翻题解，发现并没有我这样的写法，题解中的写法各式各样，思路众多，以后写这类题目一定要从多个方面进行思考。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道题真是我见过的字符串题目中的神仙题目了，难度十分的高，我现在写完了这篇博客也是无法做到完完全全的理解，但是大概也算是理解了。这道题涉及到的操作实在是太多了，现在短时间内还无法完全消化，后面有时间会尽量多看看，争取完全理解。</p>
 
                 
             </div>
@@ -484,7 +516,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://shaun-2314.github.io/2022/06/30/luogu-p5357/">http://shaun-2314.github.io/2022/06/30/luogu-p5357/</a>
+                    <a href="http://shaun-2314.github.io/2022/08/26/luogu-p6292/">http://shaun-2314.github.io/2022/08/26/luogu-p6292/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -526,12 +558,28 @@
                                     <span class="chip bg-color">acm</span>
                                 </a>
                             
+                                <a href="/tags/LCT/">
+                                    <span class="chip bg-color">LCT</span>
+                                </a>
+                            
                                 <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
                                     <span class="chip bg-color">字符串</span>
                                 </a>
                             
-                                <a href="/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/">
-                                    <span class="chip bg-color">AC自动机</span>
+                                <a href="/tags/%E5%90%8E%E7%BC%80%E8%87%AA%E5%8A%A8%E6%9C%BA/">
+                                    <span class="chip bg-color">后缀自动机</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+                                    <span class="chip bg-color">线段树</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%89%AB%E6%8F%8F%E7%BA%BF/">
+                                    <span class="chip bg-color">扫描线</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%A6%BB%E7%BA%BF/">
+                                    <span class="chip bg-color">离线</span>
                                 </a>
                             
                         </div>
@@ -790,78 +838,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/07/09/cf-edu131-e/">
+                <a href="/2022/08/26/luogu-p6292/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="codeforces-edu131-E-Text Editor">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="洛谷P6292，个人认为的字符串神仙题目">
                         
-                        <span class="card-title">codeforces-edu131-E-Text Editor</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-09
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%8B%82%E5%88%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-category">
-                                    狂刷字符串
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/acm/">
-                        <span class="chip bg-color">acm</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="chip bg-color">字符串</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%89%A9%E5%B1%95KMP/">
-                        <span class="chip bg-color">扩展KMP</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/">
-                        <span class="chip bg-color">最长公共子串</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/06/28/luogu-p3294/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="洛谷P3294，一道思路奇妙的Trie树题目">
-                        
-                        <span class="card-title">洛谷P3294，一道思路奇妙的Trie树题目</span>
+                        <span class="card-title">洛谷P6292，个人认为的字符串神仙题目</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -872,7 +860,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-26
                             </span>
                         <span class="publish-author">
                             
@@ -886,6 +874,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -893,12 +882,81 @@
                         <span class="chip bg-color">acm</span>
                     </a>
                     
+                    <a href="/tags/LCT/">
+                        <span class="chip bg-color">LCT</span>
+                    </a>
+                    
                     <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
                         <span class="chip bg-color">字符串</span>
                     </a>
                     
-                    <a href="/tags/Trie-%E6%A0%91/">
-                        <span class="chip bg-color">Trie 树</span>
+                    <a href="/tags/%E5%90%8E%E7%BC%80%E8%87%AA%E5%8A%A8%E6%9C%BA/">
+                        <span class="chip bg-color">后缀自动机</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+                        <span class="chip bg-color">线段树</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%89%AB%E6%8F%8F%E7%BA%BF/">
+                        <span class="chip bg-color">扫描线</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%A6%BB%E7%BA%BF/">
+                        <span class="chip bg-color">离线</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/08/25/lct-learning/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="学一下LCT，有多道例题">
+                        
+                        <span class="card-title">学一下LCT，有多道例题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    算法学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/acm/">
+                        <span class="chip bg-color">acm</span>
+                    </a>
+                    
+                    <a href="/tags/LCT/">
+                        <span class="chip bg-color">LCT</span>
                     </a>
                     
                 </div>
