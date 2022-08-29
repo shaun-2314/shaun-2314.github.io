@@ -425,7 +425,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.4k
+                    8.5k
                 </div>
                 
 
@@ -523,6 +523,10 @@
 
 
 <h3 id="KMP求所有循环节"><a href="#KMP求所有循环节" class="headerlink" title="KMP求所有循环节"></a>KMP求所有循环节</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> jj=p[n];</span><br><span class="line"><span class="keyword">while</span>(jj!=<span class="number">0</span>){</span><br><span class="line">    ans.<span class="built_in">emplace_back</span>(n-jj);<span class="comment">//这里的 n-jj 均为循环节，ans记录所有循环节</span></span><br><span class="line">    jj=p[jj];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="前缀函数自动机？"><a href="#前缀函数自动机？" class="headerlink" title="前缀函数自动机？"></a>前缀函数自动机？</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">char</span> s[MAXX];</span><br><span class="line"><span class="comment">//fail数组即为pmt数组,ch数组表示转移</span></span><br><span class="line"><span class="keyword">int</span> fail[MAXX],ch[MAXX][<span class="number">26</span>];</span><br><span class="line"></span><br><span class="line">ch[<span class="number">0</span>][s[<span class="number">1</span>]-<span class="string">'a'</span>]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i){</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">26</span>;++j){</span><br><span class="line">        <span class="keyword">if</span>(s[i]-<span class="string">'a'</span>==j){</span><br><span class="line">            ch[i<span class="number">-1</span>][j]=i;</span><br><span class="line">            fail[i]=ch[fail[i<span class="number">-1</span>]][j];</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            ch[i<span class="number">-1</span>][j]=ch[fail[i<span class="number">-1</span>]][j];</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -1303,7 +1307,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">45.9k</span>
+                        class="white-color">46k</span>
             
             
             
