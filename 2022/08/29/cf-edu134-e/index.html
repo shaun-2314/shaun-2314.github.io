@@ -4,13 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="每日总结-1月8日, Shaun">
-    <meta name="description" content="高斯消元与线性基高斯消元与线性基(×)
-疯狂查资料搭建博客(√)
-
-使用的是hexo框架+github的方法搭建的博客
-
-前言今天上午去做核酸，请了假，在做完核酸回来之后一直在搞博客，没有进行训练；下午也是大部分时间都在进行个人博客的一个搭">
+    <meta name="keywords" content="cf-edu134-E，KMP的代替物？（速度超快）, Shaun">
+    <meta name="description" content="Prefix Function Queries题目传送门
+题意有一个长度为 $n(1 \leq n \leq 10^6)$ 的字符串 $s$ ，有 $q(1 \leq q \leq 10^5)$ 次询问。
+每次询问给出一个非空字符串 $t(">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>每日总结-1月8日 | Shaun</title>
+    <title>cf-edu134-E，KMP的代替物？（速度超快） | Shaun</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -266,12 +263,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">每日总结-1月8日</h1>
+                    <h1 class="description center-align post-title">cf-edu134-E，KMP的代替物？（速度超快）</h1>
                 </div>
             </div>
         </div>
@@ -391,12 +388,8 @@
                                 <span class="chip bg-color">acm</span>
                             </a>
                         
-                            <a href="/tags/%E6%95%B0%E8%AE%BA/">
-                                <span class="chip bg-color">数论</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
-                                <span class="chip bg-color">博客搭建</span>
+                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                <span class="chip bg-color">字符串</span>
                             </a>
                         
                     </div>
@@ -407,8 +400,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/2021ACM%E5%AF%92%E5%81%87%E9%9B%86%E8%AE%AD/" class="post-category">
-                                2021ACM寒假集训
+                            <a href="/categories/%E7%8B%82%E5%88%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-category">
+                                狂刷字符串
                             </a>
                         
                     </div>
@@ -420,7 +413,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-08
+                    2022-08-29
                 </div>
                 
 
@@ -429,7 +422,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    649
+                    446
                 </div>
                 
 
@@ -446,52 +439,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="高斯消元与线性基"><a href="#高斯消元与线性基" class="headerlink" title="高斯消元与线性基"></a>高斯消元与线性基</h2><p>高斯消元与线性基(×)</p>
-<p>疯狂查资料搭建博客(√)</p>
-<ul>
-<li>使用的是hexo框架+github的方法搭建的博客</li>
-</ul>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>今天上午去做核酸，请了假，在做完核酸回来之后一直在搞博客，没有进行训练；下午也是大部分时间都在进行个人博客的一个搭建；晚上依然是搭建博客😭。</p>
-<p>到了1点钟左右，终于是搭建好了自己的博客。</p>
-<p>当然，十分感谢我的好朋友的帮助。不然不知道到什么时候才能搭建好。</p>
-<h3 id="慢的原因-其一"><a href="#慢的原因-其一" class="headerlink" title="慢的原因(其一)"></a>慢的原因(其一)</h3><p>我刚开始是跟着我朋友给我发的链接进行一步一步操作的，但是，在进行了无数次的重复操作并且每次都是以失败告终后，我感觉，有问题。</p>
-<p>之后去各种地方查找相关资料，最后，在(今晚🤔忘了几点了，总之就很晚，可能快12点吧)的时候，我终于在B站的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mU4y1j72n?from=search&amp;seid=2169282526152443726&amp;spm_id_from=333.337.0.0">这个视频</a>中取到了真经。</p>
-<p>具体原因就是我刚开始看的教程都是老版的教程，但是最近github有进行这方面的更新</p>
-<ul>
-<li>在上传到github上时不能用密钥进行验证了</li>
-<li>默认的分支进行修改了</li>
-</ul>
-<h3 id="解决方法-其一-和原版教程相比"><a href="#解决方法-其一-和原版教程相比" class="headerlink" title="解决方法(其一)(和原版教程相比)"></a>解决方法(其一)(和原版教程相比)</h3><ul>
-<li><p>将 <em>_config.yml</em> 文件中的 <em>branch</em> 选项改为 <em>main</em></p>
-<p>(之前的教程中这里都是<em>master</em>)</p>
-</li>
-<li><p>在输入用户名密码验证的输入密码时，不能输入账户的密码，应该输入令牌(令牌设置在下一条)或者使用其他方法进行验证。</p>
-</li>
-<li><p>令牌的设置</p>
-<ul>
-<li>在github中进入 <em>settings</em></li>
-<li>点击 <em>Developer settings</em> </li>
-<li>点击 <em>Personal access tokens</em></li>
-<li>新建一个令牌</li>
-<li>即可</li>
-</ul>
-</li>
-</ul>
-<h3 id="慢的原因-其二"><a href="#慢的原因-其二" class="headerlink" title="慢的原因(其二)"></a>慢的原因(其二)</h3><p>我在写昨天的那片博客的时候，需要在里面复制一张图片，但是，不管是使用绝对路径还是使用相对路径，在本地的.md文件中可以正常看到图片，但是到网页端就看不到图片。</p>
-<h3 id="解决方法-其二"><a href="#解决方法-其二" class="headerlink" title="解决方法(其二)"></a>解决方法(其二)</h3><p>我是看B站上的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1D7411U7Yk?from=search&amp;seid=3582402406331181956&amp;spm_id_from=333.337.0.0">这个视频</a>进行操作的。</p>
-<p>具体的就是</p>
-<ol>
-<li>将 <em>_config.yml</em> 文件中的 <em>post_asset_folder</em> 选项设置为 <em>true</em> </li>
-<li>下载一个插件</li>
-</ol>
-<ul>
-<li>在 <code>\source\_posts</code> 路径下进行 <em>Git Bash</em> </li>
-<li>输入 <code>npm add https://github.com/CodeFalling/hexo-asset-image</code> 进行下载</li>
-</ul>
-<ol start="3">
-<li>之后在.md文件中需要使用图片时，使用相对路径即可</li>
-</ol>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>不管怎么样，也算是把博客搭建好了，之后会进行博客的美化工作。</p>
+                <h1 id="Prefix-Function-Queries"><a href="#Prefix-Function-Queries" class="headerlink" title="Prefix Function Queries"></a>Prefix Function Queries</h1><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1721/problem/E">题目传送门</a></p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>有一个长度为 $n(1 \leq n \leq 10^6)$ 的字符串 $s$ ，有 $q(1 \leq q \leq 10^5)$ 次询问。</p>
+<p>每次询问给出一个非空字符串 $t(1 \leq |t| \leq 10)$ ，如果把 $t$ 拼接到 $s$ 的后面，求长度为 $n+1,n+2, \dots ,n+|t|$ 的前缀的最长相同前缀后缀。（即求 $KMP$ 中的 $pmt$ 数组的 $pmt[n+1],pmt[n+2], \dots ,pmt[n+|t|]$ ）。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>我刚开始感觉这就是个 $KMP$ 的裸题，但是在我交了上去并发现 $T$ 了的时候，感觉又不像是 $KMP$ 。</p>
+<p>然后，在今天题解出来之后，我看了一下，发现了一个叫<strong>前缀函数自动机</strong>的东西，这个东西和 $AC自动机$ 极其类似，都有一个叫失配指针的东西，然后这东西又有点像 $Trie 树$ ，有着相似的转移。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Inf 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; P;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXX=<span class="number">1000050</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,q;</span><br><span class="line"><span class="keyword">char</span> s[MAXX];</span><br><span class="line"><span class="keyword">int</span> fail[MAXX],ch[MAXX][<span class="number">26</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s%d"</span>,s+<span class="number">1</span>,&amp;q);</span><br><span class="line">	n=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	ch[<span class="number">0</span>][s[<span class="number">1</span>]-<span class="string">'a'</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i){</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">26</span>;++j){</span><br><span class="line">			<span class="keyword">if</span>(s[i]-<span class="string">'a'</span>==j){</span><br><span class="line">				ch[i<span class="number">-1</span>][j]=i;</span><br><span class="line">				fail[i]=ch[fail[i<span class="number">-1</span>]][j];</span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				ch[i<span class="number">-1</span>][j]=ch[fail[i<span class="number">-1</span>]][j];</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(q--){</span><br><span class="line">		<span class="built_in">getchar</span>();<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+n+<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">int</span> nn=<span class="built_in">strlen</span>(s+n+<span class="number">1</span>)+n;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=n+<span class="number">1</span>;i&lt;=nn;++i){</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">26</span>;++j){</span><br><span class="line">				<span class="keyword">if</span>(s[i]-<span class="string">'a'</span>==j){</span><br><span class="line">					ch[i<span class="number">-1</span>][j]=i;</span><br><span class="line">					fail[i]=ch[fail[i<span class="number">-1</span>]][j];</span><br><span class="line">				}</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					ch[i<span class="number">-1</span>][j]=ch[fail[i<span class="number">-1</span>]][j];</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=n+<span class="number">1</span>;i&lt;=nn;++i)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d%c"</span>,fail[i],<span class="string">" \n"</span>[i==nn]);</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line"><span class="comment">//	LL t;scanf("%lld",&amp;t);</span></span><br><span class="line"><span class="comment">//	while(t--)</span></span><br><span class="line">		<span class="built_in">solve</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>感觉这个东西在只需要求 $pmt$ 数组的时候，可以作为 $KMP$ 的替代品。</p>
 
                 
             </div>
@@ -518,7 +475,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://shaun-2314.github.io/2022/01/08/1-8/">http://shaun-2314.github.io/2022/01/08/1-8/</a>
+                    <a href="http://shaun-2314.github.io/2022/08/29/cf-edu134-e/">http://shaun-2314.github.io/2022/08/29/cf-edu134-e/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -560,12 +517,8 @@
                                     <span class="chip bg-color">acm</span>
                                 </a>
                             
-                                <a href="/tags/%E6%95%B0%E8%AE%BA/">
-                                    <span class="chip bg-color">数论</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
-                                    <span class="chip bg-color">博客搭建</span>
+                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                    <span class="chip bg-color">字符串</span>
                                 </a>
                             
                         </div>
@@ -824,17 +777,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/10/1-10/">
+                <a href="/2022/08/29/cf-edu134-e/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="每日总结-1月10日">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="cf-edu134-E，KMP的代替物？（速度超快）">
                         
-                        <span class="card-title">每日总结-1月10日</span>
+                        <span class="card-title">cf-edu134-E，KMP的代替物？（速度超快）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -844,21 +798,22 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/2021ACM%E5%AF%92%E5%81%87%E9%9B%86%E8%AE%AD/" class="post-category">
-                                    2021ACM寒假集训
+                            <a href="/categories/%E7%8B%82%E5%88%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-category">
+                                    狂刷字符串
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -866,8 +821,8 @@
                         <span class="chip bg-color">acm</span>
                     </a>
                     
-                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                        <span class="chip bg-color">动态规划</span>
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
                     </a>
                     
                 </div>
@@ -881,13 +836,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/08/1-7/">
+                <a href="/2022/08/26/luogu-p6292/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="每日总结:1月7日">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="洛谷P6292，个人认为的字符串神仙题目">
                         
-                        <span class="card-title">每日总结:1月7日</span>
+                        <span class="card-title">洛谷P6292，个人认为的字符串神仙题目</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -898,14 +853,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/2021ACM%E5%AF%92%E5%81%87%E9%9B%86%E8%AE%AD/" class="post-category">
-                                    2021ACM寒假集训
+                            <a href="/categories/%E7%8B%82%E5%88%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-category">
+                                    狂刷字符串
                                 </a>
                             
                             
@@ -919,8 +874,28 @@
                         <span class="chip bg-color">acm</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E8%AE%BA/">
-                        <span class="chip bg-color">数论</span>
+                    <a href="/tags/LCT/">
+                        <span class="chip bg-color">LCT</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%90%8E%E7%BC%80%E8%87%AA%E5%8A%A8%E6%9C%BA/">
+                        <span class="chip bg-color">后缀自动机</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+                        <span class="chip bg-color">线段树</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%89%AB%E6%8F%8F%E7%BA%BF/">
+                        <span class="chip bg-color">扫描线</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%A6%BB%E7%BA%BF/">
+                        <span class="chip bg-color">离线</span>
                     </a>
                     
                 </div>
@@ -1049,6 +1024,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 
