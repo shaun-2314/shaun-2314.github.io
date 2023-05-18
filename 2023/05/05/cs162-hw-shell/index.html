@@ -426,7 +426,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    2.4k
                 </div>
                 
 
@@ -497,7 +497,118 @@
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *ORI_PATH = getenv(<span class="string">"PATH"</span>);</span><br><span class="line"><span class="keyword">char</span> *PATH = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>) * (<span class="built_in">strlen</span>(ORI_PATH) + <span class="number">1</span>));</span><br><span class="line"><span class="built_in">strcpy</span>(PATH, ORI_PATH);</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> *flagptr, *token;</span><br><span class="line"></span><br><span class="line"><span class="comment">//split by ':'</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; ; ++i) {</span><br><span class="line">    token = strtok_r(PATH, <span class="string">":"</span>, &amp;flagptr);</span><br><span class="line">    <span class="keyword">if</span>(PATH != <span class="literal">NULL</span>) {</span><br><span class="line">        <span class="built_in">free</span>(PATH);<span class="comment">//maybe not safe</span></span><br><span class="line">        PATH = <span class="literal">NULL</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span>(token == <span class="literal">NULL</span>) {</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    DIR *dir = opendir(token);</span><br><span class="line">    <span class="keyword">if</span>(dir == <span class="literal">NULL</span>) {</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">dirent</span> *<span class="title">file</span>;</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>) {</span><br><span class="line">        file = readdir(dir);</span><br><span class="line">        <span class="keyword">if</span>(file &lt;= <span class="number">0</span>) {</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strcmp</span>(path, file-&gt;d_name) == <span class="number">0</span>) {</span><br><span class="line">            found = <span class="literal">true</span>;</span><br><span class="line">            <span class="comment">//-&gt;whole_path</span></span><br><span class="line">            whole_path = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>) * (<span class="built_in">strlen</span>(token) + <span class="built_in">strlen</span>(file-&gt;d_name) + <span class="number">2</span>));</span><br><span class="line">            <span class="built_in">strcpy</span>(whole_path, token);</span><br><span class="line">            whole_path[<span class="built_in">strlen</span>(token)] = <span class="string">'/'</span>;</span><br><span class="line">            <span class="built_in">strcpy</span>(whole_path + <span class="built_in">strlen</span>(token) + <span class="number">1</span>, file-&gt;d_name);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// printf("  %s\n", whole_path);//</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    closedir(dir);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(found)</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>之后使用 $execv$ 运行程序即可。</p>
-<h2 id="输入输出重定向-Redirection"><a href="#输入输出重定向-Redirection" class="headerlink" title="输入输出重定向(Redirection)"></a>输入输出重定向(Redirection)</h2>
+<h3 id="输入输出重定向-Redirection"><a href="#输入输出重定向-Redirection" class="headerlink" title="输入输出重定向(Redirection)"></a>输入输出重定向(Redirection)</h3><p>实现类似于<code>[process] &gt; [file]</code>和<code>[process] &lt; [file]</code>的输入输出重定向。</p>
+<p>即，将程序的标准输入、标准输出重定向到某个文件中。</p>
+<p>在重定向的检测中就知识在检测<code>&lt;</code>和<code>&gt;</code>的位置，以及重定向符号后面的文件是否存在。</p>
+<p>在重定向中，使用到了<code>dup2</code>函数</p>
+<p>函数原型</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dup2</span><span class="params">(<span class="keyword">int</span> oldfd, <span class="keyword">int</span> newfd)</span></span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>使用<code>newfd</code>代替<code>oldfd</code>的文件描述符</p>
+<p><code>0</code>为<code>stdin</code>，<code>1</code>为<code>stdout</code>。</p>
+<p>代码</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//make sure the redirection</span></span><br><span class="line"><span class="keyword">int</span> read_fd = <span class="number">-1</span>, write_fd = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">if</span>(config-&gt;redirection == <span class="number">1</span>)</span><br><span class="line">    read_fd = open(config-&gt;read_file_path, O_RDONLY);</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(config-&gt;redirection == <span class="number">2</span>)</span><br><span class="line">    write_fd = open(config-&gt;write_file_path, O_WRONLY | O_CREAT);</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(config-&gt;redirection == <span class="number">3</span>) {</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">strcmp</span>(config-&gt;read_file_path, config-&gt;write_file_path) == <span class="number">0</span>) {</span><br><span class="line">        read_fd = write_fd = open(config-&gt;read_file_path, O_RDWR);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> {</span><br><span class="line">        read_fd = open(config-&gt;read_file_path, O_RDONLY);</span><br><span class="line">        write_fd = open(config-&gt;write_file_path, O_WRONLY | O_CREAT);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//redirection and pipe</span></span><br><span class="line"><span class="keyword">if</span>(read_fd != <span class="number">-1</span>)</span><br><span class="line">    dup2(read_fd, <span class="number">0</span>);<span class="comment">//stdin</span></span><br><span class="line"><span class="keyword">if</span>(write_fd != <span class="number">-1</span>)</span><br><span class="line">    dup2(write_fd, <span class="number">1</span>);<span class="comment">//stdout</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="管道-Pipes"><a href="#管道-Pipes" class="headerlink" title="管道(Pipes)"></a>管道(Pipes)</h3><p><a target="_blank" rel="noopener" href="https://cs162.org/static/hw/hw-shell/docs/pipes/">管道详解</a></p>
+<p>需要完成类似于<code>[process A] | [process B] | [process C]</code>的功能</p>
+<p>需要用到函数<code>int pipe(int fds[2])</code></p>
+<p>函数原型</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pipe</span><span class="params">(<span class="keyword">int</span> pipefd[<span class="number">2</span>])</span></span>;</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>管道通信的原理</p>
+<p>使用<code>pipe</code>函数创建了两个文件描述符，<code>pipefd[0]</code>和<code>pipefd[1]</code>，这就是一个管道的读取通道和写入通道。</p>
+<p>使用<code>dup2</code>函数将标准输入输出重定向到管道即可实现管道通信。</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//redirection and pipe</span></span><br><span class="line"><span class="keyword">if</span>(read_fd != <span class="number">-1</span>)</span><br><span class="line">    dup2(read_fd, <span class="number">0</span>);<span class="comment">//stdin</span></span><br><span class="line"><span class="keyword">if</span>(write_fd != <span class="number">-1</span>)</span><br><span class="line">    dup2(write_fd, <span class="number">1</span>);<span class="comment">//stdout</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>管道的内部实现是一个循环队列，写入端通过<code>pipefd[1]</code>将字符写道管道中，如果管道是满的，那么就会阻塞该进程，待管道不满之后，继续写入。读取端通过<code>pipefd[0]</code>进行读取，如果管道是空的，会阻塞该进程，直到管道非空。</p>
+<p><strong>注：一定要保证管道读取和写入结束之后，把文件描述符关闭掉，否则会造成进程阻塞，结束不了。</strong></p>
+<p>管道的创建</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> **pipe_fd;<span class="comment">//pipe_file_discreptor</span></span><br><span class="line"><span class="keyword">pid_t</span> *pid;<span class="comment">//process_id</span></span><br><span class="line">my_token *token = (my_token*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(my_token));</span><br><span class="line">token-&gt;tokens_length = <span class="number">0</span>;</span><br><span class="line">token-&gt;tokens = <span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">int</span> pgrp = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">pipe_fd = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>*) * pipe_num);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; pipe_num; ++i) {</span><br><span class="line">    pipe_fd[i] = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * <span class="number">2</span>);</span><br><span class="line">    pipe(pipe_fd[i]);</span><br><span class="line">}</span><br><span class="line">pid = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * (pipe_num + <span class="number">1</span>));</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在每一个子进程中需要将所有无关的管道都给关闭掉</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//close other pipe</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; config-&gt;pipe_num; ++i) {</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; ++j) {</span><br><span class="line">        <span class="keyword">if</span>((config-&gt;pipe[i][j] != config-&gt;read_file_fd) &amp;&amp; (config-&gt;pipe[i][j] != config-&gt;write_file_fd)) {</span><br><span class="line">            close(config-&gt;pipe[i][j]);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>进行管道的输入输出重定向</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//redirection and pipe</span></span><br><span class="line"><span class="keyword">if</span>(read_fd != <span class="number">-1</span>)</span><br><span class="line">    dup2(read_fd, <span class="number">0</span>);<span class="comment">//stdin</span></span><br><span class="line"><span class="keyword">if</span>(write_fd != <span class="number">-1</span>)</span><br><span class="line">    dup2(write_fd, <span class="number">1</span>);<span class="comment">//stdout</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>同理，在父进程中，需要将所有的管道都关闭</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//close pipe</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; pipe_num; ++i)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; ++j)</span><br><span class="line">        close(pipe_fd[i][j]);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>之后，等待所有的子进程结束</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//wait for the childs</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= pipe_num; ++i)</span><br><span class="line">    waitpid(pid[i], <span class="literal">NULL</span>, <span class="number">0</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="信号处理"><a href="#信号处理" class="headerlink" title="信号处理"></a>信号处理</h3><p>使用<code>setpgid</code>函数改变进程所属的进程组</p>
+<p>使用<code>tcsetpgrp(int fd, pid_t pgrp)</code>函数改变前台进程组。</p>
+<p>键入<code>Ctrl + Z</code>或<code>Ctrl + C</code>时，应该只对前台的进程组产生影响，而不应该对shell本身或后台的进程组产生影响。</p>
+<p><strong>常用信号概览</strong></p>
+<p>在<code>linux</code>中<code>man 7 signal</code>以查看。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SIGINT</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><code>CTRL-C</code>. 默认情况下，会结束程序。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SIGQUIT</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p> <code>CTRL-\</code>. 默认情况下，这个也是会结束程序，但是这个信号会试程序在退出时产生一个core文件，类似于一个程序错误信号。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SIGKILL</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>没有快捷键. 这个信号会强制结束一个程序，并且，该信号不能被程序重载。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SIGTERM</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>没有快捷键. 这个信号和 <code>SIGQUIT</code> 的行为是一样的。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SIGTSTP</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><code>CTRL-Z</code>. 默认情况下，这会使程序暂停并回到<code>bash</code>中。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SIGCONT</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>在<code>bash</code>中，当运行<code>fg</code>或者<code>fg %NUMBER</code>命令时，该信号会使一个暂停的进程重新恢复运行。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SIGTTIN</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>会停止后台进程从键盘读入数据</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SIGTTOU</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>和<code>SIGTTIN</code>类似，这个管的是<code>output</code>，停止后台进程在<code>shell</code>的输出，并阻塞。</p>
+</blockquote>
+<p>在C语言中，可以使用<code>sigaction</code>函数来改变当前进程对某些信号的行为，可以忽略、执行自定义的操作等。</p>
+<p>函数原型</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sigaction</span><span class="params">(<span class="keyword">int</span> signum, <span class="keyword">const</span> struct sigaction *act, struct sigaction *oldact)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sigaction</span> {</span></span><br><span class="line">    <span class="keyword">void</span>     (*sa_handler)(<span class="keyword">int</span>);</span><br><span class="line">    <span class="keyword">void</span>     (*sa_sigaction)(<span class="keyword">int</span>, <span class="keyword">siginfo_t</span> *, <span class="keyword">void</span> *);</span><br><span class="line">    <span class="keyword">sigset_t</span>   sa_mask;</span><br><span class="line">    <span class="keyword">int</span>        sa_flags;</span><br><span class="line">    <span class="keyword">void</span>     (*sa_restorer)(<span class="keyword">void</span>);</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+
+<p>函数表示，使用新的行为<code>act</code>来代替对信号<code>signum</code>的操作，将原来的行为保存到<code>oldact</code>中，<code>oldact</code>为<code>NULL</code>时表示不保存原来的行为。</p>
+<p>定义了一个专门处理信号的函数</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//signal control</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sigaction</span> <span class="title">sa</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//handle the singal</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">signal_handle</span><span class="params">()</span> </span>{</span><br><span class="line">  <span class="keyword">if</span> (sigaction(SIGTTOU, &amp;sa, <span class="literal">NULL</span>) == <span class="number">-1</span>) { perror(<span class="string">"sigaction error"</span>); <span class="built_in">exit</span>(EXIT_FAILURE); }</span><br><span class="line">  <span class="keyword">if</span> (sigaction(SIGTTIN, &amp;sa, <span class="literal">NULL</span>) == <span class="number">-1</span>) { perror(<span class="string">"sigaction error"</span>); <span class="built_in">exit</span>(EXIT_FAILURE); }</span><br><span class="line">  <span class="keyword">if</span> (sigaction(SIGCONT, &amp;sa, <span class="literal">NULL</span>) == <span class="number">-1</span>) { perror(<span class="string">"sigaction error"</span>); <span class="built_in">exit</span>(EXIT_FAILURE); }</span><br><span class="line">  <span class="keyword">if</span> (sigaction(SIGTSTP, &amp;sa, <span class="literal">NULL</span>) == <span class="number">-1</span>) { perror(<span class="string">"sigaction error"</span>); <span class="built_in">exit</span>(EXIT_FAILURE); }</span><br><span class="line">  <span class="keyword">if</span> (sigaction(SIGTERM, &amp;sa, <span class="literal">NULL</span>) == <span class="number">-1</span>) { perror(<span class="string">"sigaction error"</span>); <span class="built_in">exit</span>(EXIT_FAILURE); }</span><br><span class="line">  <span class="keyword">if</span> (sigaction(SIGINT,  &amp;sa, <span class="literal">NULL</span>) == <span class="number">-1</span>) { perror(<span class="string">"sigaction error"</span>); <span class="built_in">exit</span>(EXIT_FAILURE); }</span><br><span class="line">  <span class="keyword">if</span> (sigaction(SIGQUIT, &amp;sa, <span class="literal">NULL</span>) == <span class="number">-1</span>) { perror(<span class="string">"sigaction error"</span>); <span class="built_in">exit</span>(EXIT_FAILURE); }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>main函数中的初始化</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sa.sa_handler = SIG_IGN; <span class="comment">// 表示忽略</span></span><br><span class="line">sigemptyset(&amp;sa.sa_mask);</span><br><span class="line">sa.sa_flags = <span class="number">0</span>;</span><br><span class="line">signal_handle();</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>在每个子进程的入口，都需要将信号改为默认行为。</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Enable some signals</span></span><br><span class="line">sa.sa_handler = SIG_DFL;</span><br><span class="line">signal_handle();</span><br><span class="line"><span class="comment">//setpgid</span></span><br><span class="line">setpgid(getpid(), getpid());</span><br></pre></td></tr></tbody></table></figure>
+
+
                 
             </div>
             <hr/>
@@ -833,13 +944,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/05/16/sqlite3-learning/">
+                <a href="/2023/05/08/job-interview-alibaba-ad-first/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="数据库sqlite3学习">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="一面阿里广告营销部门的引擎架构团队">
                         
-                        <span class="card-title">数据库sqlite3学习</span>
+                        <span class="card-title">一面阿里广告营销部门的引擎架构团队</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -850,14 +961,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-05-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-05-08
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/sql/" class="post-category">
-                                    sql
+                            <a href="/categories/%E9%9D%A2%E8%AF%95/" class="post-category">
+                                    面试
                                 </a>
                             
                             
@@ -867,12 +978,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/sql/">
-                        <span class="chip bg-color">sql</span>
+                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">面试</span>
                     </a>
                     
-                    <a href="/tags/sqlite3/">
-                        <span class="chip bg-color">sqlite3</span>
+                    <a href="/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/">
+                        <span class="chip bg-color">阿里巴巴</span>
                     </a>
                     
                 </div>
@@ -1120,7 +1231,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">50.8k</span>
+                        class="white-color">54.2k</span>
             
             
             
